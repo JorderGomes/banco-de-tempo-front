@@ -2,7 +2,7 @@
     background: linear-gradient(90deg, rgba(240,243,244,1) 0%, rgba(175,182,204,1) 35%, rgba(55,68,130,1) 100%);
 }
 
-.page-container {
+.landing-container {
     width: 100%;
     max-width: 1800px;
     height: 100%;
@@ -144,7 +144,7 @@
 
 @media (min-width:1200px){
 
-    .page-container {
+    .landing-container {
         height: 90vh;
     }
 
