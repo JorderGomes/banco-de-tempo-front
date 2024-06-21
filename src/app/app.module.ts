@@ -4,6 +4,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/pages/landing/landing.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { LandingComponent } from './components/pages/landing/landing.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [
     provideClientHydration()
