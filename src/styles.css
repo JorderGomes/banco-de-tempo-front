@@ -10,12 +10,13 @@
     --bank-bg-light-color: #F0F3F4;
     --bank-light-color: #F8F9FA;
     --bank-bg-dark-color: #1b2c3c; 
+    --bank-bg-dark-hoover: rgba(33, 37, 41, 0.10);
     --bank-dark-color: #212529; 
 }
 
 #wrap {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--bank-bg-light-color);
 }
 
@@ -113,6 +114,14 @@
     cursor: pointer;
     background-color: var(--bank-primary-color);
     color: var(--bank-light-color);
+}
+
+/*  */
+
+.post-interact-btn {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 }
 
 /* Breakpoints */

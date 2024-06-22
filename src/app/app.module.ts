@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { ProfileFeedComponent } from './components/profile-feed/profile-feed.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProfileFeedComponent } from './components/profile-feed/profile-feed.com
     ProfileComponent,
     NavbarComponent,
     ProfileCardComponent,
-    ProfileFeedComponent
+    ProfileFeedComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

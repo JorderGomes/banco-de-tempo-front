@@ -1,0 +1,27 @@
+<div id="post" class="card">
+    <div class="card-header">
+        <img src="{{urlProfileImage}}" class="img-fluid profile-img"
+            alt="foto de perfil do usuário">
+        <span>{{userName}}</span>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{subtitle}}</p>
+        <img src="{{urlPostImage}}" class="img-fluid" alt="foto da postagem">
+    </div>
+    <div class="card-footer">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn post-interact-btn">
+                <fa-icon [icon]="faThumbsUp"></fa-icon>
+                <span>Gostei</span>
+            </button>
+            <button type="button" class="btn post-interact-btn middle-btn">
+                <fa-icon [icon]="faComment"></fa-icon>
+                <span>Commentar</span>
+            </button>
+            <button type="button" class="btn post-interact-btn">
+                <fa-icon [icon]="faShare"></fa-icon>
+                <span>Compartilhar</span>
+            </button>
+        </div>
+    </div>
+</div>
