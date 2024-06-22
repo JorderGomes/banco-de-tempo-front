@@ -1,0 +1,22 @@
+#profile-feed {
+    background-color: #fff;
+    height: 100%;
+}
+
+.card-header-tabs {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.profile-feed-tab{
+    text-align: center;
+}
+
+.nav-link {
+    color: var(--bank-primary-color);
+}
+
+#profile-feed-header {
+    padding: 0;
+}

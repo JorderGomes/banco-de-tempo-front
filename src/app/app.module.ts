@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { ProfileFeedComponent } from './components/profile-feed/profile-feed.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     LandingComponent,
     ProfileComponent,
     NavbarComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    ProfileFeedComponent
   ],
   imports: [
     BrowserModule,
