@@ -1,0 +1,16 @@
+#profile-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-img {
+    border-radius: 100%;
+    width: 128px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}

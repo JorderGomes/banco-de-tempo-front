@@ -16,6 +16,7 @@
 #wrap {
     width: 100vw;
     height: 100vh;
+    background-color: var(--bank-bg-light-color);
 }
 
 .flex-center{
@@ -35,7 +36,7 @@
 }
 
 .page-content {
-    width: 968px;
+    width: 768px;
     max-width: 1800px;
     margin: 2rem auto 0;
     display: flex;
@@ -50,6 +51,7 @@
 .bank-bg-primary {
     background-color: var(--bank-primary-color);
 }
+
 
 .red {
     border: 1px solid red;
@@ -113,6 +115,7 @@
     color: var(--bank-light-color);
 }
 
+/* Breakpoints */
 
 @media (max-width: 1024px){
     .page-content {
