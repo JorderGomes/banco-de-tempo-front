@@ -15,8 +15,8 @@ export class ProfileFeedComponent {
     
   }
   
-  talentSubmit() {
-    alert("Talent submited");
+  talentSubmit(event: Event) {
+    event.preventDefault();
     console.log("Talent submited");
   }
 }

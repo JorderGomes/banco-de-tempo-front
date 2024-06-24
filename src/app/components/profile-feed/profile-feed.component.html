@@ -40,7 +40,7 @@
             ></app-post>
         </div>
         <div class="tab-pane active" id="talentos">
-            <form (ngSubmit)="talentSubmit()" id="talent-form" class="inline-form">
+            <form (submit)="talentSubmit($event)" id="talent-form" class="inline-form">
                     <input type="text" 
                         formControlName="talent-name" 
                         name="" 
