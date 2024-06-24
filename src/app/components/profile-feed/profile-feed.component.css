@@ -20,3 +20,39 @@
 #profile-feed-header {
     padding: 0;
 }
+
+#talent-form {
+    --input-count: 2;
+}
+
+#schedule-form {
+    --input-count: 3;
+}
+
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.inline-form .bank-input {
+    height: 45px;
+}
+
+.bank-input {
+    flex: 1 1 calc(10 / 12 * 100% / var(--input-count) - 1rem);
+    box-sizing: border-box;
+}
+
+.primary-btn {
+    flex: 0 0 calc(2 / 12 * 100%);
+    box-sizing: border-box;
+}
+
+/* .bank-input {
+    width: calc(5 / 12 * 100%);
+}
+
+.primary-btn {
+    width: calc(2 / 12 * 100%);
+} */
