@@ -40,38 +40,87 @@
             ></app-post>
         </div>
         <div class="tab-pane active" id="talentos">
-            <form (submit)="talentSubmit($event)" id="talent-form" class="inline-form">
-                    <input type="text" 
-                        formControlName="talent-name" 
+            <form (ngSubmit)="talentSubmit()" [formGroup]="talentForm" #formTalent="ngForm" id="talent-form" class="inline-form">
+                <div class="bank-input-group">
+                    <input 
+                        type="text" 
+                        formControlName="talentName" 
                         name="" 
                         id="talent-name" 
                         class="bank-input" 
-                        placeholder="Nome">
+                        placeholder="Nome"
+                        required>
+                    <div *ngIf="talentName.invalid && formTalent.submitted">
+                        <p>O nome é obrigatório!</p>
+                    </div>
+                </div>    
 
+                <div class="bank-input-group">
                     <input type="text" 
-                        formControlName="talent-description" 
+                        formControlName="talentDescription" 
                         name="" 
                         id="talent-description" 
                         class="bank-input" 
-                        placeholder="Descrição">
+                        placeholder="Descrição"
+                        required>
+                    <div *ngIf="talentDescription.invalid && formTalent.submitted">
+                        <p>A descrição é obrigatória!</p>
+                    </div>
+                </div>
 
                     <input type="submit" value="Salvar" class="primary-btn">
             </form>
         </div>
         <div class="tab-pane" id="horarios">
-            <form action="" id="schedule-form" class="inline-form">
-                <select name="day" id="day" class="bank-input">
-                  <option value="Domingo">Domingo</option>
-                  <option value="Segunda">Segunda</option>
-                  <option value="Terça">Terça</option>
-                  <option value="Quarta">Quarta</option>
-                  <option value="Quinta">Quinta</option>
-                  <option value="Sexta">Sexta</option>
-                  <option value="Sábado">Sábado</option>
-                </select>
-                <input type="time" id="time-init" name="time-init" step="3600" min="00:00" max="23:00" class="bank-input">
-                <input type="time" id="time-end" name="time-end" step="3600" min="00:00" max="23:00" class="bank-input">
-                <input type="submit" value="Salvar" class="primary-btn">
+            <form (ngSubmit)="scheduleSubmit()" [formGroup]="scheduleForm" #formSchedule="ngForm"  id="schedule-form" class="inline-form">
+                <div class="bank-input-group">
+                    <select name="day" id="day" class="bank-input" formControlName="scheduleDay">
+                      <option value="Domingo">Domingo</option>
+                      <option value="Segunda">Segunda</option>
+                      <option value="Terça">Terça</option>
+                      <option value="Quarta">Quarta</option>
+                      <option value="Quinta">Quinta</option>
+                      <option value="Sexta">Sexta</option>
+                      <option value="Sábado">Sábado</option>
+                    </select>
+                    <div *ngIf="scheduleDay.invalid && formSchedule.submitted">
+                        <p>O dia deve ser selecionado!</p>
+                    </div>
+                </div>
+                <div class="bank-input-group">
+                    <input 
+                        type="time" 
+                        id="time-init" 
+                        name="time-init" 
+                        formControlName="scheduleTimeInit"
+                        step="3600" 
+                        min="00:00" 
+                        max="23:00" 
+                        class="bank-input"
+                        required
+                        >
+                        <div *ngIf="scheduleTimeInit.invalid && formSchedule.submitted">
+                            <p>Informe a hora inicial!</p>
+                        </div>
+                </div>
+                <div class="bank-input-group">
+                    <input 
+                        type="time" 
+                        id="time-end" 
+                        name="time-end" 
+                        formControlName="scheduleTimeEnd"
+                        step="3600" 
+                        min="00:00" 
+                        max="23:00" 
+                        class="bank-input"
+                        required
+                        >
+                        <div *ngIf="scheduleTimeEnd.invalid && formSchedule.submitted">
+                            <p>Informe a hora final!</p>
+                        </div>
+                </div>
+                <!-- <input type="submit" value="Salvar" class="primary-btn"> -->
+                <button type="submit" class="primary-btn">Salvar</button>
             </form>
         </div>
     </div>

@@ -35,11 +35,11 @@
     gap: 8px;
 }
 
-.inline-form .bank-input {
+.inline-form .bank-input-group {
     height: 45px;
 }
 
-.bank-input {
+.bank-input-group {
     flex: 1 1 calc(10 / 12 * 100% / var(--input-count) - 1rem);
     box-sizing: border-box;
 }
