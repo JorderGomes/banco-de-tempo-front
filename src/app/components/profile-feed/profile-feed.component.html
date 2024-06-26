@@ -84,7 +84,7 @@
                         <td class="">{{talent.name}}</td>
                         <td class="">{{talent.description}}</td>
                         <td class="text-center">
-                            <button class="danger-btn btn btn-danger">
+                            <button (click)="handleRemoveTalent(talent.id!)" class="danger-btn btn btn-danger">
                                 <fa-icon [icon]="faTrash" class="flex-center text-light"></fa-icon>
                             </button>
                         </td>

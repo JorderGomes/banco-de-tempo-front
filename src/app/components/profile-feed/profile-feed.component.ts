@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Talent } from '../../interfaces/talent';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { TalentService } from '../../services/talent.service';
 
 @Component({
   selector: 'app-profile-feed',
@@ -14,9 +15,14 @@ export class ProfileFeedComponent {
   scheduleForm!: FormGroup;
   faTrash = faTrash;
 
+  talentLastId: number = 1;
 
   talentList: Talent[] = [];
 
+  constructor (
+    public talentService: TalentService
+  ) {}
+  
   ngOnInit(): void {
     this.talentForm = new FormGroup({
       id: new FormControl(''),
@@ -58,11 +64,18 @@ export class ProfileFeedComponent {
     }
 
     console.log(this.talentForm.value);
+    this.talentForm.value['id'] = this.talentLastId;
+    this.talentLastId++;
+    
     this.talentList.push(this.talentForm.value);
     console.log(this.talentList);
 
     formDirective.resetForm();
     this.talentForm.reset();
+  }
+
+  handleRemoveTalent(talentId: number){
+    this.talentList = this.talentService.removeTalent(talentId, this.talentList);
   }
 
   scheduleSubmit(): void {
