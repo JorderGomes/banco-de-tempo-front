@@ -49,10 +49,6 @@
     box-sizing: border-box;
 }
 
-/* .bank-input {
-    width: calc(5 / 12 * 100%);
+.talent-item td {
+    align-items: center;
 }
-
-.primary-btn {
-    width: calc(2 / 12 * 100%);
-} */

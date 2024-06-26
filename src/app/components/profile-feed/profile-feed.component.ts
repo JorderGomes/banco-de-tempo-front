@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { Talent } from '../../interfaces/talent';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-profile-feed',
@@ -11,14 +12,16 @@ export class ProfileFeedComponent {
   
   talentForm!: FormGroup;
   scheduleForm!: FormGroup;
+  faTrash = faTrash;
 
-  
+
+  talentList: Talent[] = [];
 
   ngOnInit(): void {
     this.talentForm = new FormGroup({
       id: new FormControl(''),
-      talentName: new FormControl('', [Validators.required]),
-      talentDescription: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
     });
 
     this.scheduleForm = new FormGroup({
@@ -29,12 +32,12 @@ export class ProfileFeedComponent {
     });
   }
   
-  get talentName(){
-    return this.talentForm.get('talentName')!;
+  get name(){
+    return this.talentForm.get('name')!;
   }
 
-  get talentDescription(){
-    return this.talentForm.get('talentDescription')!;
+  get description(){
+    return this.talentForm.get('description')!;
   }
 
   get scheduleDay () {
@@ -49,8 +52,17 @@ export class ProfileFeedComponent {
     return this.scheduleForm.get('scheduleTimeEnd')!;
   }
 
-  talentSubmit(): void {
-    console.log("Talent submited");
+  talentSubmit(formData: any, formDirective: FormGroupDirective): void {
+    if (this.talentForm.invalid) {
+      return;
+    }
+
+    console.log(this.talentForm.value);
+    this.talentList.push(this.talentForm.value);
+    console.log(this.talentList);
+
+    formDirective.resetForm();
+    this.talentForm.reset();
   }
 
   scheduleSubmit(): void {

@@ -40,36 +40,58 @@
             ></app-post>
         </div>
         <div class="tab-pane active" id="talentos">
-            <form (ngSubmit)="talentSubmit()" [formGroup]="talentForm" #formTalent="ngForm" id="talent-form" class="inline-form">
+            <form (ngSubmit)="talentSubmit(talentForm, formTalent)" [formGroup]="talentForm" #formTalent="ngForm" id="talent-form" class="inline-form">
                 <div class="bank-input-group">
                     <input 
                         type="text" 
-                        formControlName="talentName" 
+                        formControlName="name" 
                         name="" 
                         id="talent-name" 
                         class="bank-input" 
                         placeholder="Nome"
                         required>
-                    <div *ngIf="talentName.invalid && formTalent.submitted">
+                    <div *ngIf="name.invalid && formTalent.submitted">
                         <p>O nome é obrigatório!</p>
                     </div>
                 </div>    
 
                 <div class="bank-input-group">
                     <input type="text" 
-                        formControlName="talentDescription" 
+                        formControlName="description" 
                         name="" 
                         id="talent-description" 
                         class="bank-input" 
                         placeholder="Descrição"
                         required>
-                    <div *ngIf="talentDescription.invalid && formTalent.submitted">
+                    <div *ngIf="description.invalid && formTalent.submitted">
                         <p>A descrição é obrigatória!</p>
                     </div>
                 </div>
 
                     <input type="submit" value="Salvar" class="primary-btn">
             </form>
+            <div id="talent-list">
+                <table class="table table-striped align-middle">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="col-5">Nome</th>
+                        <th scope="col" class="col-5">Descrição</th>
+                        <th scope="col" class="col-2">Remover</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let talent of talentList" class="talent-item">
+                        <td class="">{{talent.name}}</td>
+                        <td class="">{{talent.description}}</td>
+                        <td class="text-center">
+                            <button class="danger-btn btn btn-danger">
+                                <fa-icon [icon]="faTrash" class="flex-center text-light"></fa-icon>
+                            </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
         </div>
         <div class="tab-pane" id="horarios">
             <form (ngSubmit)="scheduleSubmit()" [formGroup]="scheduleForm" #formSchedule="ngForm"  id="schedule-form" class="inline-form">
