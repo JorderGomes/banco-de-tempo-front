@@ -22,7 +22,7 @@
 }
 
 #talent-form {
-    --input-count: 2;
+    --input-count: 3;
 }
 
 #schedule-form {
@@ -36,8 +36,6 @@
     border-bottom: 0.2px solid var(--bs-border-color-translucent);
 }
 
-
-
 .bank-input-group {
     flex: 1 1 calc(10 / 12 * 100% / var(--input-count) - 1rem);
     box-sizing: border-box;
@@ -48,16 +46,14 @@
     box-sizing: border-box;
 }
 
-.bank-btn-group .primary-btn {
+/* .bank-btn-group .primary-btn { */
     /* height: 100%; */
     /* margin-bottom: 15px; */
-}
+/* } */
 
 .talent-item td {
     align-items: center;
 }
-
-
 
 .info-list {
     margin-top: 2rem;

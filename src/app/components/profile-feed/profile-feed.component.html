@@ -54,7 +54,6 @@
                         <p>O nome é obrigatório!</p>
                     </div>
                 </div>    
-
                 <div class="bank-input-group">
                     <input type="text" 
                         formControlName="description" 
@@ -67,6 +66,23 @@
                         <p>A descrição é obrigatória!</p>
                     </div>
                 </div>
+                <div class="bank-input-group">
+                    <select name="tag" id="tag" class="bank-input" formControlName="tag" >
+                        <option value="" disabled selected hidden>Categoria</option>
+
+                        <option value="children_and_youth">Crianças e jovens</option>
+                        <option value="adult_supervision">Acompanhamento de adultos</option>
+                        <option value="home_and_domestic_life">Casa e vida doméstica</option>
+                        <option value="animals_and_plants">Animais e plantas</option>
+                        <option value="manual_activities">Atividades manuais</option>
+                        <option value="administrative_activities">Atividades administrativas</option>
+                        <option value="teaching_and_learning">Ensino e aprendizagem</option>
+                        <option value="beauty_and_personal_care">Beleza e cuidados pessoais</option>
+                    </select>
+                    <div *ngIf="tag.invalid && formTalent.submitted">
+                        <p>Selecione uma categoria!</p>
+                    </div>
+                </div>
                 <div class="bank-btn-group">
                     <input type="submit" value="Salvar" class="primary-btn align-self-end">
                 </div>
@@ -75,8 +91,9 @@
                 <table class="table table-striped align-middle">
                     <thead>
                       <tr>
-                        <th scope="col" class="col-5">Nome</th>
-                        <th scope="col" class="col-5">Descrição</th>
+                        <th scope="col" class="col-3">Nome</th>
+                        <th scope="col" class="col-3">Descrição</th>
+                        <th scope="col" class="col-3">Tag</th>
                         <th scope="col" class="col-2">Remover</th>
                       </tr>
                     </thead>
@@ -84,6 +101,7 @@
                       <tr *ngFor="let talent of talentList" class="talent-item">
                         <td class="">{{talent.name}}</td>
                         <td class="">{{talent.description}}</td>
+                        <td class="">{{talent.tag}}</td>
                         <td class="text-center">
                             <button (click)="handleRemoveTalent(talent.id!)" class="danger-btn btn btn-danger">
                                 <fa-icon [icon]="faTrash" class="flex-center text-light"></fa-icon>

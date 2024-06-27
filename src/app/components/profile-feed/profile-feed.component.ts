@@ -33,6 +33,7 @@ export class ProfileFeedComponent {
       id: new FormControl(''),
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
+      tag: new FormControl('', [Validators.required]),
     });
 
     this.scheduleForm = new FormGroup({
@@ -49,6 +50,10 @@ export class ProfileFeedComponent {
 
   get description(){
     return this.talentForm.get('description')!;
+  }
+
+  get tag(){
+    return this.talentForm.get('tag')!;
   }
 
   get day () {
