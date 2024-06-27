@@ -1,23 +1,19 @@
-<!-- <div id="profile-feed">
-    <p>profile-feed works!</p>
-</div> -->
-
 <div id="profile-feed" class="card">
     <div id="profile-feed-header" class="card-header">
         <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link" aria-current="true" data-bs-toggle="tab" href="#postagens">Postagens</a>
+                <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#postagens">Postagens</a>
             </li>
             <li class="nav-item profile-feed-tab">
                 <a class="nav-link"  data-bs-toggle="tab" href="#talentos">Talentos</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link active" data-bs-toggle="tab" href="#horarios">Horários</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#horarios">Horários</a>
             </li>
         </ul>
     </div>
     <div class="card-body tab-content">
-        <div class="tab-pane" id="postagens">
+        <div class="tab-pane active" id="postagens">
             <app-post
                 [urlProfileImage]="'../../../assets/ignore-assets/user-02.jpeg'"
                 [userName]="'Carmila filha'"
@@ -112,7 +108,7 @@
                 </table>
             </div>
         </div>
-        <div class="tab-pane active" id="horarios">
+        <div class="tab-pane" id="horarios">
             <form (ngSubmit)="scheduleSubmit(scheduleForm, formSchedule)" [formGroup]="scheduleForm" #formSchedule="ngForm"  id="schedule-form" class="inline-form">
                 <div class="bank-input-group">
                     <select name="day" id="day" class="bank-input" formControlName="day">
