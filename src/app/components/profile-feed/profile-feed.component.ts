@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular
 import { Talent } from '../../interfaces/talent';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { TalentService } from '../../services/talent.service';
+import { Schedule } from '../../interfaces/schedule';
+import { ScheduleService } from '../../services/schedule.service';
 
 @Component({
   selector: 'app-profile-feed',
@@ -16,11 +18,14 @@ export class ProfileFeedComponent {
   faTrash = faTrash;
 
   talentLastId: number = 1;
+  scheduleLastId: number = 1;
 
   talentList: Talent[] = [];
+  scheduleList: Schedule[] = [];
 
   constructor (
-    public talentService: TalentService
+    public talentService: TalentService,
+    public scheduleService: ScheduleService
   ) {}
   
   ngOnInit(): void {
@@ -32,9 +37,9 @@ export class ProfileFeedComponent {
 
     this.scheduleForm = new FormGroup({
       id: new FormControl(''),
-      scheduleDay: new FormControl('', [Validators.required]),
-      scheduleTimeInit: new FormControl('', [Validators.required]),
-      scheduleTimeEnd: new FormControl('', [Validators.required]),
+      day: new FormControl('', [Validators.required]),
+      timeInit: new FormControl('', [Validators.required]),
+      timeEnd: new FormControl('', [Validators.required]),
     });
   }
   
@@ -46,16 +51,16 @@ export class ProfileFeedComponent {
     return this.talentForm.get('description')!;
   }
 
-  get scheduleDay () {
-    return this.scheduleForm.get('scheduleDay')!;
+  get day () {
+    return this.scheduleForm.get('day')!;
   }
 
-  get scheduleTimeInit () {
-    return this.scheduleForm.get('scheduleTimeInit')!;
+  get timeInit () {
+    return this.scheduleForm.get('timeInit')!;
   }
 
-  get scheduleTimeEnd () {
-    return this.scheduleForm.get('scheduleTimeEnd')!;
+  get timeEnd () {
+    return this.scheduleForm.get('timeEnd')!;
   }
 
   talentSubmit(formData: any, formDirective: FormGroupDirective): void {
@@ -78,8 +83,23 @@ export class ProfileFeedComponent {
     this.talentList = this.talentService.removeTalent(talentId, this.talentList);
   }
 
-  scheduleSubmit(): void {
-    console.log("Schedule submited");
-    
+  scheduleSubmit(formData: any, formDirective: FormGroupDirective): void {
+    if (this.scheduleForm.invalid) {
+      return;
+    }
+
+    console.log(this.scheduleForm.value);
+    this.scheduleForm.value['id'] = this.scheduleLastId;
+    this.scheduleLastId++;
+
+    this.scheduleList.push(this.scheduleForm.value);
+    console.log(this.scheduleList);
+
+    formDirective.resetForm();
+    this.scheduleForm.reset();
+  }
+
+  handleRemoveSchedule(scheduleId: number) {
+    this.scheduleList = this.scheduleService.removeSchedule(scheduleId, this.scheduleList);
   }
 }

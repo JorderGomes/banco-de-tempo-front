@@ -9,15 +9,15 @@
                 <a class="nav-link" aria-current="true" data-bs-toggle="tab" href="#postagens">Postagens</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link active"  data-bs-toggle="tab" href="#talentos">Talentos</a>
+                <a class="nav-link"  data-bs-toggle="tab" href="#talentos">Talentos</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link" data-bs-toggle="tab" href="#horarios">Horários</a>
+                <a class="nav-link active" data-bs-toggle="tab" href="#horarios">Horários</a>
             </li>
         </ul>
     </div>
     <div class="card-body tab-content">
-        <div class="tab-pane " id="postagens">
+        <div class="tab-pane" id="postagens">
             <app-post
                 [urlProfileImage]="'../../../assets/ignore-assets/user-02.jpeg'"
                 [userName]="'Carmila filha'"
@@ -39,7 +39,7 @@
                 [urlPostImage]="'../../../assets/ignore-assets/violão.jpg'"
             ></app-post>
         </div>
-        <div class="tab-pane active" id="talentos">
+        <div class="tab-pane" id="talentos">
             <form (ngSubmit)="talentSubmit(talentForm, formTalent)" [formGroup]="talentForm" #formTalent="ngForm" id="talent-form" class="inline-form">
                 <div class="bank-input-group">
                     <input 
@@ -67,10 +67,11 @@
                         <p>A descrição é obrigatória!</p>
                     </div>
                 </div>
-
-                    <input type="submit" value="Salvar" class="primary-btn">
+                <div class="bank-btn-group">
+                    <input type="submit" value="Salvar" class="primary-btn align-self-end">
+                </div>
             </form>
-            <div id="talent-list">
+            <div id="talent-list" class="info-list">
                 <table class="table table-striped align-middle">
                     <thead>
                       <tr>
@@ -90,22 +91,23 @@
                         </td>
                       </tr>
                     </tbody>
-                  </table>
+                </table>
             </div>
         </div>
-        <div class="tab-pane" id="horarios">
-            <form (ngSubmit)="scheduleSubmit()" [formGroup]="scheduleForm" #formSchedule="ngForm"  id="schedule-form" class="inline-form">
+        <div class="tab-pane active" id="horarios">
+            <form (ngSubmit)="scheduleSubmit(scheduleForm, formSchedule)" [formGroup]="scheduleForm" #formSchedule="ngForm"  id="schedule-form" class="inline-form">
                 <div class="bank-input-group">
-                    <select name="day" id="day" class="bank-input" formControlName="scheduleDay">
-                      <option value="Domingo">Domingo</option>
-                      <option value="Segunda">Segunda</option>
-                      <option value="Terça">Terça</option>
-                      <option value="Quarta">Quarta</option>
-                      <option value="Quinta">Quinta</option>
-                      <option value="Sexta">Sexta</option>
-                      <option value="Sábado">Sábado</option>
+                    <select name="day" id="day" class="bank-input" formControlName="day">
+                        <option value="Domingo">Domingo</option>
+                        <option value="Segunda">Segunda</option>
+                        <option value="Terça">Terça</option>
+                        <option value="Quarta">Quarta</option>
+                        <option value="Quinta">Quinta</option>
+                        <option value="Sexta">Sexta</option>
+                        <option value="Sábado">Sábado</option>
                     </select>
-                    <div *ngIf="scheduleDay.invalid && formSchedule.submitted">
+                    <label for="day">Dia da semana</label>
+                    <div *ngIf="day.invalid && formSchedule.submitted">
                         <p>O dia deve ser selecionado!</p>
                     </div>
                 </div>
@@ -114,36 +116,63 @@
                         type="time" 
                         id="time-init" 
                         name="time-init" 
-                        formControlName="scheduleTimeInit"
+                        formControlName="timeInit"
                         step="3600" 
                         min="00:00" 
                         max="23:00" 
                         class="bank-input"
                         required
                         >
-                        <div *ngIf="scheduleTimeInit.invalid && formSchedule.submitted">
-                            <p>Informe a hora inicial!</p>
-                        </div>
+                    <label for="time-init">Hora inicial</label>
+                    <div *ngIf="timeInit.invalid && formSchedule.submitted">
+                        <p>Informe a hora inicial!</p>
+                    </div>
                 </div>
                 <div class="bank-input-group">
                     <input 
                         type="time" 
                         id="time-end" 
                         name="time-end" 
-                        formControlName="scheduleTimeEnd"
+                        formControlName="timeEnd"
                         step="3600" 
                         min="00:00" 
                         max="23:00" 
                         class="bank-input"
                         required
                         >
-                        <div *ngIf="scheduleTimeEnd.invalid && formSchedule.submitted">
-                            <p>Informe a hora final!</p>
-                        </div>
+                    <label for="time-end">Hora final</label>
+                    <div *ngIf="timeEnd.invalid && formSchedule.submitted">
+                        <p>Informe a hora final!</p>
+                    </div>
                 </div>
-                <!-- <input type="submit" value="Salvar" class="primary-btn"> -->
-                <button type="submit" class="primary-btn">Salvar</button>
+                <div class="bank-btn-group">
+                    <button type="submit" class="primary-btn ">Salvar</button>
+                </div>
             </form>
+            <div id="schedule-list" class="info-list">
+                <table class="table table-striped align-middle">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="col-3">Dia</th>
+                        <th scope="col" class="col-3">Hora inicial</th>
+                        <th scope="col" class="col-3">Hora final</th>
+                        <th scope="col" class="col-2">Remover</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let schedule of scheduleList" class="schedule-item">
+                        <td class="">{{schedule.day}}</td>
+                        <td class="">{{schedule.timeInit}}</td>
+                        <td class="">{{schedule.timeEnd}}</td>
+                        <td class="text-center">
+                          <button (click)="handleRemoveSchedule(schedule.id!)" class="danger-btn btn btn-danger">
+                            <fa-icon [icon]="faTrash" class="flex-center text-light"></fa-icon>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

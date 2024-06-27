@@ -33,22 +33,32 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    border-bottom: 0.2px solid var(--bs-border-color-translucent);
 }
 
-.inline-form .bank-input-group {
-    height: 45px;
-}
+
 
 .bank-input-group {
     flex: 1 1 calc(10 / 12 * 100% / var(--input-count) - 1rem);
     box-sizing: border-box;
 }
 
-.primary-btn {
+.bank-btn-group {
     flex: 0 0 calc(2 / 12 * 100%);
     box-sizing: border-box;
 }
 
+.bank-btn-group .primary-btn {
+    /* height: 100%; */
+    /* margin-bottom: 15px; */
+}
+
 .talent-item td {
     align-items: center;
+}
+
+
+
+.info-list {
+    margin-top: 2rem;
 }
