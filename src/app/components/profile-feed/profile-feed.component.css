@@ -1,0 +1,60 @@
+#profile-feed {
+    background-color: #fff;
+    height: 100%;
+}
+
+.card-header-tabs {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.profile-feed-tab{
+    text-align: center;
+}
+
+.nav-link {
+    color: var(--bank-primary-color);
+}
+
+#profile-feed-header {
+    padding: 0;
+}
+
+#talent-form {
+    --input-count: 3;
+}
+
+#schedule-form {
+    --input-count: 3;
+}
+
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-bottom: 0.2px solid var(--bs-border-color-translucent);
+}
+
+.bank-input-group {
+    flex: 1 1 calc(10 / 12 * 100% / var(--input-count) - 1rem);
+    box-sizing: border-box;
+}
+
+.bank-btn-group {
+    flex: 0 0 calc(2 / 12 * 100%);
+    box-sizing: border-box;
+}
+
+/* .bank-btn-group .primary-btn { */
+    /* height: 100%; */
+    /* margin-bottom: 15px; */
+/* } */
+
+.talent-item td {
+    align-items: center;
+}
+
+.info-list {
+    margin-top: 2rem;
+}
