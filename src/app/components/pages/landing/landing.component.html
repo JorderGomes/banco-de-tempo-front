@@ -1,18 +1,23 @@
-<div id="landing-page" class="full-screen flex-center">
-    <div class="page-container">
+<div id="landing-page" class="full-page flex-center">
+    <div class="landing-container">
         <article id="hero" class="side-content light-text flex-center">
             <div id="hero-content" class="card">
-                <h1 class="title">Banco de Tempo</h1>
+                <h1 class="title">
+                    <fa-icon [icon]="faClock" class="title-icon"></fa-icon>
+                    Banco de Tempo
+                </h1>
                 <h2 class="sub-title">Compartilhando tempo e gerando riqueza</h2>
                 <section id="image-content">
                     <img id="visual-bank" src="../../../../assets/calendario.png" alt="">
                 </section>
-                <!-- <button id="enter-btn" type="button" class="btn secondary-btn">Entrar</button> -->
             </div>
         </article>
         <article id="form-content" class="side-content light-text flex-center">
             <div class="line">
-                <h1 class="title form-titles">Banco de Tempo</h1>
+                <h1 class="title form-titles">
+                    <fa-icon [icon]="faClock" class="title-icon"></fa-icon>
+                    Banco de Tempo
+                </h1>
                 <h2 class="sub-title form-titles">Compartilhando tempo e gerando riqueza</h2>
             </div>
             <div id="enter-card" class="card">
@@ -48,9 +53,9 @@
                     </div>
                 </div>
                 <div id="enter-card-footer" class="card-footer">
-                    <p class="social-icon flex-center light-text bg-facebook">F</p>
-                    <p class="social-icon flex-center light-text bg-instagram">I</p>
-                    <p class="social-icon flex-center light-text bg-google">G</p>
+                    <fa-icon [icon]="faFacebook" class="fa-social-icon fa-bg-facebook flex-center"></fa-icon>
+                    <fa-icon [icon]="faInstagram" class="fa-social-icon fa-bg-instagram flex-center"></fa-icon>
+                    <fa-icon [icon]="faGoogle" class="fa-social-icon fa-bg-google flex-center"></fa-icon>
                 </div>
            </div>
         </article>
