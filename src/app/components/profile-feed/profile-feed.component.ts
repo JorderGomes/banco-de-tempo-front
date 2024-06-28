@@ -5,6 +5,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { TalentService } from '../../services/talent.service';
 import { Schedule } from '../../interfaces/schedule';
 import { ScheduleService } from '../../services/schedule.service';
+import { Post } from '../../interfaces/post';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-profile-feed',
@@ -22,10 +24,12 @@ export class ProfileFeedComponent {
 
   talentList: Talent[] = [];
   scheduleList: Schedule[] = [];
+  postList: Post[] = [];
 
   constructor (
     public talentService: TalentService,
-    public scheduleService: ScheduleService
+    public scheduleService: ScheduleService,
+    public postService: PostsService
   ) {}
   
   ngOnInit(): void {
@@ -42,6 +46,8 @@ export class ProfileFeedComponent {
       timeInit: new FormControl('', [Validators.required]),
       timeEnd: new FormControl('', [Validators.required]),
     });
+
+    this.postList = this.postService.getPosts();
   }
   
   get name(){

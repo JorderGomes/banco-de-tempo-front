@@ -14,25 +14,11 @@
     </div>
     <div class="card-body tab-content">
         <div class="tab-pane active" id="postagens">
-            <app-post
-                [urlProfileImage]="'../../../assets/ignore-assets/user-02.jpeg'"
-                [userName]="'Carmila filha'"
-                [subtitle]="'Legenda Lorem ipsum dolor sit amet consectetur adipisicing elit.'"
-                [urlPostImage]="'../../../assets/ignore-assets/jardinagem.jpg'"
-            ></app-post>
-
-            <app-post
-                [urlProfileImage]="'../../../assets/ignore-assets/user-02.jpeg'"
-                [userName]="'Carmila filha'"
-                [subtitle]="'Legenda Lorem ipsum dolor sit amet consectetur adipisicing elit.'"
-                [urlPostImage]="'../../../assets/ignore-assets/xadrez.jpg'"
-            ></app-post>
-
-            <app-post
-                [urlProfileImage]="'../../../assets/ignore-assets/user-02.jpeg'"
-                [userName]="'Carmila filha'"
-                [subtitle]="'Legenda Lorem ipsum dolor sit amet consectetur adipisicing elit.'"
-                [urlPostImage]="'../../../assets/ignore-assets/violão.jpg'"
+            <app-post *ngFor="let post of postList"
+                [urlProfileImage]="post.urlProfileImage"
+                [userName]="post.userName"
+                [subtitle]="post.subtitle"
+                [urlPostImage]="post.urlPostImage"
             ></app-post>
         </div>
         <div class="tab-pane" id="talentos">

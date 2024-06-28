@@ -20,10 +20,3 @@ export class PostComponent {
   faShare = faShare;
 
 }
-
-
-// - Link imagem de perfil - ../../../assets/ignore-assets/user-01.jpeg
-// - Perfil texto alternativo
-// - Nome de usuário
-// - Legenda
-// - Link da imagem de postagem
