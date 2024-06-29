@@ -1,3 +1,19 @@
 #search-form {
     padding: 1rem;
 }
+
+#search-form .line {
+    display: flex;
+}
+
+.bank-input {
+    border: 0.2px solid var(--bs-border-color-translucent);
+}
+
+@media (max-width: 768px){
+
+    #search-form .line {
+        flex-direction: column;
+    }
+
+}

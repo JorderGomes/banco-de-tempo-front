@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-feed',
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular
 export class FeedComponent {
 
   searchForm!: FormGroup;
+  faMagnifyingGlass = faMagnifyingGlass;
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
