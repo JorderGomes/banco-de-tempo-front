@@ -1,3 +1,13 @@
 #user-card {
     width: 300px;
 }
+
+.card-header {
+    text-align: center;
+}
+
+.card-header img {
+    width: 30%;
+    height: auto;
+    border-radius: 100%;
+}
