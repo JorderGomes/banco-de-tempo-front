@@ -1,3 +1,7 @@
+#form-search-container {
+    margin-bottom: 1rem;
+}
+
 #search-form {
     padding: 1rem;
 }
@@ -8,6 +12,18 @@
 
 .bank-input {
     border: 0.2px solid var(--bs-border-color-translucent);
+}
+
+#feed {
+    padding: 1rem 1rem 0 1rem;
+}
+
+.feed-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
 @media (max-width: 768px){

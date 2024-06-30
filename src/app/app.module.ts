@@ -12,6 +12,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 import { ProfileFeedComponent } from './components/profile-feed/profile-feed.component';
 import { PostComponent } from './components/post/post.component';
 import { FeedComponent } from './components/pages/feed/feed.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FeedComponent } from './components/pages/feed/feed.component';
     ProfileCardComponent,
     ProfileFeedComponent,
     PostComponent,
-    FeedComponent
+    FeedComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

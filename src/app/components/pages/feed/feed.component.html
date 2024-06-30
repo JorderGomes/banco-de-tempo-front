@@ -1,7 +1,7 @@
-<div id="profile-feed" class="full-page default-page">
+<div id="main-feed" class="full-page default-page">
     <app-navbar></app-navbar>
     <div class="page-content">
-        <div class="card">
+        <div id="form-search-container" class="card">
             <form 
                 (ngSubmit)="searchFavor(searchForm, formSearch)"
                 [formGroup]="searchForm"
@@ -73,6 +73,14 @@
                 
             </form>
         </div>
-        
+
+        <div id="feed" class="card flex-fill">
+            <div class="feed-body">
+                <app-user-card></app-user-card>
+                <app-user-card></app-user-card>
+                <app-user-card></app-user-card>
+                <app-user-card></app-user-card>
+            </div>
+        </div>
     </div>
 </div>
