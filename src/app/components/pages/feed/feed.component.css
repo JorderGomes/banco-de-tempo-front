@@ -15,16 +15,18 @@
 }
 
 #feed {
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem;
 }
 
 .feed-body {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    border: 1px solid red;
+    display: grid;
     gap: 1rem;
-}
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 100%;
+} 
+
+
 
 @media (max-width: 768px){
 
