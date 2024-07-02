@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { UserCardData } from '../../../interfaces/user-card-data';
+import { UserCardService } from '../../../services/user-card.service';
 
 
 @Component({
@@ -12,6 +14,11 @@ export class FeedComponent {
 
   searchForm!: FormGroup;
   faMagnifyingGlass = faMagnifyingGlass;
+  userDataList: UserCardData[] = [];
+
+  constructor (
+    public userCardService: UserCardService
+  ){}
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
@@ -19,6 +26,9 @@ export class FeedComponent {
       day: new FormControl('', [Validators.required]),
       timeInit: new FormControl('', [Validators.required]),
     });
+
+    this.userDataList = this.userCardService.getUserCardData();
+
   }
 
   get day() {

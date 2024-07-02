@@ -76,10 +76,10 @@
 
         <div id="feed" class="card flex-fill">
             <div class="feed-body">
-                    <app-user-card></app-user-card>
-                    <app-user-card></app-user-card>
-                    <app-user-card></app-user-card>
-                <!-- <app-user-card></app-user-card> -->
+                    <app-user-card 
+                        *ngFor="let userData of userDataList" 
+                        [userData]="userData">
+                    </app-user-card>
             </div>
         </div>
     </div>
