@@ -13,6 +13,7 @@ import { ProfileFeedComponent } from './components/profile-feed/profile-feed.com
 import { PostComponent } from './components/post/post.component';
 import { FeedComponent } from './components/pages/feed/feed.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { RequestsBodyComponent } from './components/requests-body/requests-body.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     ProfileFeedComponent,
     PostComponent,
     FeedComponent,
-    UserCardComponent
+    UserCardComponent,
+    RequestsBodyComponent
   ],
   imports: [
     BrowserModule,

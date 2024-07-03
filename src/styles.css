@@ -73,13 +73,13 @@
 
 /* Forms */
 
-.bank-input:first-child{
+.bank-input-top{
     border-bottom: solid 0.5px #000;
     border-bottom-color: #ccc;
     border-radius: 5px 5px 0 0;
 }
 
-.bank-input:last-child{
+.bank-input-bottom{
     border-radius:  0 0 5px 5px;
     border-bottom: none;
 }
@@ -93,13 +93,16 @@
     height: 40px;
     padding: 10px;
     border: 2px solid transparent;
+    border-radius: 5px;
     background: var(--bank-light-color);
     outline: none;
     font-family: poppins, sans-serif;
     transition: all .25s ease;
-    border-bottom: solid 0.5px #000;
+    border-bottom: solid 0.5px var(--bank-bg-dark-color);
     border-bottom-color: #ccc;
 }
+
+.bank-input-
 
 .bank-input:focus{
     border: 1px solid var(--bank-primary-color);

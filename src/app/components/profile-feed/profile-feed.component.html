@@ -2,7 +2,7 @@
     <div id="profile-feed-header" class="card-header">
         <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#postagens">Postagens</a>
+                <a class="nav-link" aria-current="true" data-bs-toggle="tab" href="#postagens">Postagens</a>
             </li>
             <li class="nav-item profile-feed-tab">
                 <a class="nav-link"  data-bs-toggle="tab" href="#talentos">Talentos</a>
@@ -10,10 +10,13 @@
             <li class="nav-item profile-feed-tab">
                 <a class="nav-link" data-bs-toggle="tab" href="#horarios">Horários</a>
             </li>
+            <li class="nav-item profile-feed-tab">
+                <a class="nav-link active" data-bs-toggle="tab" href="#solicitacoes">Favores</a>
+            </li>
         </ul>
     </div>
     <div class="card-body tab-content">
-        <div class="tab-pane active" id="postagens">
+        <div class="tab-pane" id="postagens">
             <app-post *ngFor="let post of postList"
                 [urlProfileImage]="post.urlProfileImage"
                 [userName]="post.userName"
@@ -173,6 +176,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="tab-pane active" id="solicitacoes">
+            <app-requests-body></app-requests-body>
         </div>
     </div>
 </div>

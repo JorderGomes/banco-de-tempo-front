@@ -1,0 +1,47 @@
+<div id="requests-body">
+    <div id="requests-filters" class="">
+        <div class="bank-input-group col-6">
+            <label for="requests">Tipo de solicitações</label>
+            <select name="requests" id="requests" class="bank-input">
+                <option value="requested" selected>Serviços que você solicitou</option>
+                <option value="required">Serviços solicitados para você</option>
+            </select>
+        </div>
+        <div class="bank-input-group col-6">
+            <label for="status">Status da solicitação</label>
+            <select name="status" id="status" class="bank-input">
+                <option value="all" selected>Todas</option>
+                <option value="pendent">Pendente</option>
+                <option value="refused">Recusada</option>
+                <option value="canceled">Cancelada</option>
+                <option value="acepted">Aceita</option>
+                <option value="completed">Realizada</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="requests-list">
+        <table class="table table-striped align-middle">
+            <thead>
+              <tr>
+                <th scope="col" class="">Usuário</th>
+                <th scope="col" class="">Talento</th>
+                <th scope="col" class="">Dia</th>
+                <th scope="col" class="">Horário</th>
+                <th scope="col" class="">Qtde Horas</th>
+                <th scope="col" class="">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let favorRequest of favorRequests" class="">
+                <td class="">{{favorRequest.userName}}</td>
+                <td class="">{{favorRequest.talentName}}</td>
+                <td class="">{{favorRequest.day}}</td>
+                <td class="">{{favorRequest.schedule}}</td>
+                <td class="">{{favorRequest.qtdHours}}</td>
+                <td class="">{{favorRequest.status}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
