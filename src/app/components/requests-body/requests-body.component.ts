@@ -19,4 +19,12 @@ export class RequestsBodyComponent {
     this.favorRequests = this.favorService.getFavorRequests();
   }
 
+  updateStatus(id: number, newStatus: string){
+    this.favorRequests.forEach(currentFavor => {
+      if (id === currentFavor.id) {
+        currentFavor.status = newStatus;
+      }
+    });
+  }
+
 }

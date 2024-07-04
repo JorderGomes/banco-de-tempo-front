@@ -12,6 +12,7 @@
     --bank-bg-dark-color: #1b2c3c; 
     --bank-bg-dark-hoover: rgba(33, 37, 41, 0.10);
     --bank-dark-color: #212529; 
+    --bank-danger-color: #B22222;
 }
 
 #wrap {
