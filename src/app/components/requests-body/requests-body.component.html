@@ -44,7 +44,7 @@
                     <button (click)="updateStatus(favorRequest.id!, 'Cancelada')" *ngIf="favorRequest.status === 'Pendente'" class="btn text-light status-cancelada">
                         Cancelar
                     </button>
-                    <button (click)="updateStatus(favorRequest.id!, 'Finalizada')" *ngIf="favorRequest.status === 'Aceita'" class="btn text-light status-finalizada">
+                    <button (click)="updateStatus(favorRequest.id!, 'Finalizada', favorRequest.qtdHours)" *ngIf="favorRequest.status === 'Aceita'" class="btn text-light status-finalizada">
                         Finalizar
                     </button>
                 </td>

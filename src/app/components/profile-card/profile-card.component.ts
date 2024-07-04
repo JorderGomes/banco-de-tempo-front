@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class ProfileCardComponent {
 
-  balance: number = 100;
+  balance: number = 0;
+
+  constructor(public profileservice: ProfileService) {}
+
+  ngOnInit() {
+    this.profileservice.balance$.subscribe((balance) => {
+      this.balance = balance;
+    });
+  }
 
 }
