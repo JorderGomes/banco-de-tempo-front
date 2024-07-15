@@ -44,15 +44,36 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="cadastro">
-                        <form action="">
+                        <form 
+                            (ngSubmit)="createUser(createUserForm, formCreateUser)" 
+                            [formGroup]="createUserForm" 
+                            #formCreateUser="ngForm">
                             <div class="bank-input-group">
-                                <input type="text" name="" id="" class="bank-input" placeholder="Nome">
-                                <input type="email" name="" id="" class="bank-input" placeholder="Email">
-                                <input type="password" name="" id="" class="bank-input" placeholder="Senha">
+                                <input 
+                                type="text" 
+                                name="" 
+                                id="" class="bank-input" 
+                                placeholder="Nome"
+                                formControlName="name">
+
+                                <input 
+                                type="email" 
+                                name="" 
+                                id="" class="bank-input" 
+                                placeholder="Email"
+                                formControlName="email">
+
+                                <input 
+                                type="password" 
+                                name="" 
+                                id="" class="bank-input" 
+                                placeholder="Senha"
+                                formControlName="password">
+
                             </div>
-                            <a class="" routerLink="/feed">
-                                <input type="submit" value="Cadastrar" class="primary-btn">
-                            </a>
+                            <!-- <a class="" routerLink="/feed"> -->
+                            <input type="submit" value="Cadastrar" class="primary-btn">
+                            <!-- </a> -->
                         </form>
                     </div>
                 </div>
