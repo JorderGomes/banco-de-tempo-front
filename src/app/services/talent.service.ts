@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Talent } from '../interfaces/talent';
+import { Talent } from '../interfaces/entities/talent';
 
 @Injectable({
   providedIn: 'root'

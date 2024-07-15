@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { Talent } from '../../interfaces/talent';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { TalentService } from '../../services/talent.service';
-import { Schedule } from '../../interfaces/schedule';
-import { ScheduleService } from '../../services/schedule.service';
+import { Schedule } from '../../interfaces/entities/schedule';
+import { Talent } from '../../interfaces/entities/talent';
 import { Post } from '../../interfaces/post';
 import { PostsService } from '../../services/posts.service';
+import { ScheduleService } from '../../services/schedule.service';
+import { TalentService } from '../../services/talent.service';
 
 @Component({
   selector: 'app-profile-feed',
