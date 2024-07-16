@@ -11,9 +11,9 @@ import { lastValueFrom, Observable, tap } from 'rxjs';
 })
 export class UserService {
 
-  private userKey: string = '';
+  private userKey: string = 'local-user';
   private baseApiUrl:string = environment.baseApiUrl;
-  private apiUrl: string = `${this.baseApiUrl}/user`;
+  private apiResourceUrl: string = `${this.baseApiUrl}/user`;
 
   constructor(
     private localStorage: StorageService,
@@ -21,13 +21,29 @@ export class UserService {
   ) { }
 
   async createUser(user: User): Promise<User> {
-    const newUser = await lastValueFrom(this.http.post<User>(this.apiUrl, user));
+    const newUser = await lastValueFrom(this.http.post<User>(this.apiResourceUrl, user));
     this.setLocalUser(newUser);
     return newUser;
   }
 
+  getUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.apiResourceUrl);
+  }
+
+  getUser(id: number): Observable<User>{
+    return this.http.get<User>(`${this.apiResourceUrl}/${id}`);
+  }
+
+  remove(id: number){
+    return this.http.delete<User>(`${this.apiResourceUrl}/${id}`);
+  }
+
+  editUser(newUser: User): Observable<User> {
+    const url = `${this.apiResourceUrl}/${newUser.id}`;
+    return this.http.put<User>(url, newUser);
+  }
+
   private setLocalUser (user:User){
-    this.userKey = `user-${user.id!}`;
     this.localStorage.setItem(this.userKey, user);
   }
 

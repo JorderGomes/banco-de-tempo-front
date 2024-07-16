@@ -6,6 +6,7 @@ import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular
 import { User } from '../../../interfaces/entities/user';
 import { UserService } from '../../../services/api/user.service';
 import { StorageService } from '../../../services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -23,7 +24,8 @@ export class LandingComponent {
   currentUser: User | null = null;
 
   constructor (
-    public userService: UserService
+    public userService: UserService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -33,6 +35,10 @@ export class LandingComponent {
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
+
+    
+
+    
   }
 
   get name(){
@@ -55,6 +61,7 @@ export class LandingComponent {
     try {
       const newUser = await this.userService.createUser(this.createUserForm.value);
       console.log('User created and saved locally:', newUser);
+      this.router.navigate(['/feed']);
     } catch (error) {
       console.error('Error creating user:', error);
     }
