@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ProfileCardComponent {
 
+  @Output() togglePopupEvent = new EventEmitter<void>();
   balance: number = 0;
 
   constructor(public profileservice: ProfileService) {}
@@ -16,6 +17,10 @@ export class ProfileCardComponent {
     this.profileservice.balance$.subscribe((balance) => {
       this.balance = balance;
     });
+  }
+
+  onEditProfileClick() {
+    this.togglePopupEvent.emit();
   }
 
 }

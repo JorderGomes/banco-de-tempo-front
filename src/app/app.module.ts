@@ -15,6 +15,8 @@ import { PostComponent } from './components/post/post.component';
 import { FeedComponent } from './components/pages/feed/feed.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { RequestsBodyComponent } from './components/requests-body/requests-body.component';
+import { PopupCanvaComponent } from './components/popup-canva/popup-canva.component';
+import { PopupEditProfileComponent } from './components/popup-edit-profile/popup-edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { RequestsBodyComponent } from './components/requests-body/requests-body.
     PostComponent,
     FeedComponent,
     UserCardComponent,
-    RequestsBodyComponent
+    RequestsBodyComponent,
+    PopupCanvaComponent,
+    PopupEditProfileComponent
   ],
   imports: [
     BrowserModule,

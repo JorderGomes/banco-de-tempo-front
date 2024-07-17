@@ -1,0 +1,16 @@
+#edit-profile {
+    min-width: 300px;
+    width: 60%;
+    margin: auto;
+}
+
+.card-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-header h5 {
+    margin-bottom: 0;
+}
