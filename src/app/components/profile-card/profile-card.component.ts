@@ -22,5 +22,5 @@ export class ProfileCardComponent {
   onEditProfileClick() {
     this.togglePopupEvent.emit();
   }
-
+ 
 }

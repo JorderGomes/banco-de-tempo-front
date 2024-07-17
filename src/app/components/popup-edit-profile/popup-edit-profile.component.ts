@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output} from '@angular/core';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,7 +7,12 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './popup-edit-profile.component.css'
 })
 export class PopupEditProfileComponent {
-
+  
+  @Output() closePopup = new EventEmitter<void>();
   faClose = faClose;
+  
+  onClickClose() {
+    this.closePopup.emit();
+  }
 
 }

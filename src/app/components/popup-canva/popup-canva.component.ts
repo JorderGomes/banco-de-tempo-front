@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-popup-canva',
@@ -8,5 +8,11 @@ import { Component, Input } from '@angular/core';
 export class PopupCanvaComponent {
 
   @Input() currentPopup:string = "";
+  @Output() closePopup = new EventEmitter<void>();
+
+  onClose() {
+    this.closePopup.emit();
+  }
+
 
 }

@@ -1,4 +1,4 @@
-<app-popup-canva *ngIf="popupCanvaIsVisible" [currentPopup]="'edit-profile'">
+<app-popup-canva *ngIf="popupCanvaIsVisible" [currentPopup]="'edit-profile'" (closePopup)="togglePopup()">
 </app-popup-canva>
 <div id="profile-page" class="full-page default-page">
     <app-navbar></app-navbar>

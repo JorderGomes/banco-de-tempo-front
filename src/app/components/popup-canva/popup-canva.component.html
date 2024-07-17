@@ -1,3 +1,3 @@
 <div id="popup-canva">
-    <app-popup-edit-profile *ngIf="currentPopup==='edit-profile'"></app-popup-edit-profile>
+    <app-popup-edit-profile *ngIf="currentPopup==='edit-profile'" (closePopup)="onClose()"></app-popup-edit-profile>
 </div>
