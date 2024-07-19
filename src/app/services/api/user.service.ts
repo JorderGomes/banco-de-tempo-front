@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../interfaces/entities/user';
 import { StorageService } from '../storage.service';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom, Observable, tap } from 'rxjs';
 
 
@@ -34,8 +34,9 @@ export class UserService {
     return this.http.get<User>(`${this.apiResourceUrl}/${id}`);
   }
 
-  remove(id: number){
-    return this.http.delete<User>(`${this.apiResourceUrl}/${id}`);
+  removeUser(id: number){
+    const url = `${this.apiResourceUrl}/${id}`;
+    return this.http.delete(url);
   }
 
   editUser(newUser: User): Observable<User> {
@@ -43,12 +44,20 @@ export class UserService {
     return this.http.put<User>(url, newUser);
   }
 
+  updatePassword(id: number, newPassword: string){
+    const url = `${this.apiResourceUrl}/${id}/update-password`;
+    let params = new HttpParams();
+    params = params.append("newPassword", newPassword);
+    return this.http.patch(url, { params });
+  }
+
   private setLocalUser (user:User){
     this.localStorage.setItem(this.userKey, user);
   }
 
   public getLocalUser() {
-    return this.localStorage.getItem(this.userKey);
+    // user: User = this.localStorage.getItem<User>();
+    return this.localStorage.getItem<User>(this.userKey);
   }
 
 }

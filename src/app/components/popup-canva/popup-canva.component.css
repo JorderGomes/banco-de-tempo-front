@@ -10,3 +10,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 100;
 }
+
+#popup-canva .popup-wrap {
+    width: 100%;
+}

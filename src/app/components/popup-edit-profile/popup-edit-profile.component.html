@@ -6,8 +6,31 @@
         </button>
     </div>
     <div class="card-body">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione nostrum odio dignissimos, quae vitae tenetur nemo eius quisquam, sunt nesciunt facere earum officia quia incidunt molestias inventore numquam quos aut, dolor quam illo dicta? Eaque modi quas voluptates ut alias aut pariatur, adipisci consequuntur tempore, sint neque repellendus cupiditate harum.
-        </p>
+        <div id="user-data" class="update-box">
+            <h6>Atualizar contato</h6>
+            <input type="text" placeholder="Nome de usuário" id="" class="bank-input">
+            <input type="email" placeholder="Email" id="" class="bank-input" >
+            <button class="btn btn-primary">Salvar</button>
+        </div>
+        <span class="divider"></span>
+        <div id="user-password" class="update-box">
+            <h6>Atualizar senha</h6>
+            <input (input)="verifyNewPassword()" type="password" [(ngModel)]="newPassword" placeholder="Nova senha" id="" class="bank-input" autocomplete="new-password">
+            <input (input)="verifyNewPassword()" type="password" [(ngModel)]="confirmPassword" placeholder="Confirme sua senha" id="" class="bank-input" autocomplete="new-password">
+            <button class="btn btn-primary" [disabled]="!passwordConfirmed" (click)="updatePassword()">
+                Atualizar senha
+            </button>
+        </div>
+        <span class="divider"></span>
+        <div class="update-box">
+            <h6>Perigo</h6>
+            <p>
+                Esta ação não pode ser desfeita. E vai remover permanentemente sua conta e todos os seus dados. Para confirmar esta ação por favor insira o seu email atual.
+            </p>
+            <input type="email" [(ngModel)]="userEmail" placeholder="email" id="user-email" class="bank-input" (input)="verifyEmail($event)">
+            <button class="btn btn-danger" [disabled]="!emailValid" (click)="deleteAccount()">
+                Apagar conta
+            </button>
+        </div>
     </div>
 </div>

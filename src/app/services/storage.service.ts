@@ -8,14 +8,23 @@ export class StorageService {
 
     // Salvar objeto no localStorage
     setItem(key: string, value: any): void {
-      const jsonString = JSON.stringify(value);
-      localStorage.setItem(key, jsonString);
+      if (typeof localStorage !== 'undefined') {
+        const jsonString = JSON.stringify(value);
+        localStorage.setItem(key, jsonString);
+      } else {
+        console.error('localStorage is not available.');
+      }
     }
   
     // Recuperar objeto do localStorage
     getItem<T>(key: string): T | null {
-      const jsonString = localStorage.getItem(key);
-      return jsonString ? JSON.parse(jsonString) : null;
+      if (typeof localStorage !== 'undefined') {
+        const jsonString = localStorage.getItem(key);
+        return jsonString ? JSON.parse(jsonString) : null;
+      } else {
+        // console.error('localStorage is not available.');
+        return null;
+      }
     }
   
     // Remover item do localStorage
