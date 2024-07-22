@@ -2,16 +2,16 @@
     <div id="profile-feed-header" class="card-header">
         <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link" aria-current="true" data-bs-toggle="tab" href="#postagens">Postagens</a>
+                <a class="nav-link"  data-bs-toggle="tab" href="#postagens">Postagens</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link"  data-bs-toggle="tab" href="#talentos">Talentos</a>
+                <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#talentos">Talentos</a>
             </li>
             <li class="nav-item profile-feed-tab">
                 <a class="nav-link" data-bs-toggle="tab" href="#horarios">Horários</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link active" data-bs-toggle="tab" href="#solicitacoes">Favores</a>
+                <a class="nav-link " data-bs-toggle="tab" href="#solicitacoes">Favores</a>
             </li>
         </ul>
     </div>
@@ -24,7 +24,7 @@
                 [urlPostImage]="post.urlPostImage"
             ></app-post>
         </div>
-        <div class="tab-pane" id="talentos">
+        <div class="tab-pane active" id="talentos">
             <form (ngSubmit)="talentSubmit(talentForm, formTalent)" [formGroup]="talentForm" #formTalent="ngForm" id="talent-form" class="inline-form">
                 <div class="bank-input-group">
                     <input 
@@ -52,19 +52,19 @@
                     </div>
                 </div>
                 <div class="bank-input-group">
-                    <select name="tag" id="tag" class="bank-input" formControlName="tag" >
+                    <select name="category" id="category" class="bank-input" formControlName="category" >
                         <option value="" disabled selected hidden>Categoria</option>
 
-                        <option value="children_and_youth">Crianças e jovens</option>
-                        <option value="adult_supervision">Acompanhamento de adultos</option>
-                        <option value="home_and_domestic_life">Casa e vida doméstica</option>
-                        <option value="animals_and_plants">Animais e plantas</option>
-                        <option value="manual_activities">Atividades manuais</option>
-                        <option value="administrative_activities">Atividades administrativas</option>
-                        <option value="teaching_and_learning">Ensino e aprendizagem</option>
-                        <option value="beauty_and_personal_care">Beleza e cuidados pessoais</option>
+                        <option value="CRIANÇAS_E_JOVENS">Crianças e jovens</option>
+                        <option value="ACOMPANHAMENTO_DE_ADULTOS">Acompanhamento de adultos</option>
+                        <option value="CASA_E_VIDA_DOMESTICA">Casa e vida doméstica</option>
+                        <option value="ANIMAIS_E_PLANTAS">Animais e plantas</option>
+                        <option value="ATIVIDADES_MANUAIS">Atividades manuais</option>
+                        <option value="ATIVIDADES_ADMINISTRATIVAS">Atividades administrativas</option>
+                        <option value="ENSINO_E_APRENDIZAGEM">Ensino e aprendizagem</option>
+                        <option value="BELEZA_E_CUIDADOS_PESSOAIS">Beleza e cuidados pessoais</option>                        
                     </select>
-                    <div *ngIf="tag.invalid && formTalent.submitted">
+                    <div *ngIf="category.invalid && formTalent.submitted">
                         <p>Selecione uma categoria!</p>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                       <tr *ngFor="let talent of talentList" class="talent-item">
                         <td class="">{{talent.name}}</td>
                         <td class="">{{talent.description}}</td>
-                        <td class="">{{talent.tag}}</td>
+                        <td class="">{{talent.category}}</td>
                         <td class="text-center">
                             <button (click)="handleRemoveTalent(talent.id!)" class="danger-btn btn btn-danger">
                                 <fa-icon [icon]="faTrash" class="flex-center text-light"></fa-icon>
@@ -177,7 +177,7 @@
                 </table>
             </div>
         </div>
-        <div class="tab-pane active" id="solicitacoes">
+        <div class="tab-pane" id="solicitacoes">
             <app-requests-body></app-requests-body>
         </div>
     </div>

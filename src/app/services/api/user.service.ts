@@ -54,7 +54,6 @@ export class UserService {
   }
 
   public getLocalUser() {
-    // user: User = this.localStorage.getItem<User>();
     return this.localStorage.getItem<User>(this.userKey);
   }
 

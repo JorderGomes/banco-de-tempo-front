@@ -4,9 +4,9 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Schedule } from '../../interfaces/entities/schedule';
 import { Talent } from '../../interfaces/entities/talent';
 import { Post } from '../../interfaces/post';
+import { TalentService } from '../../services/api/talent.service';
 import { PostsService } from '../../services/posts.service';
 import { ScheduleService } from '../../services/schedule.service';
-import { TalentService } from '../../services/talent.service';
 
 @Component({
   selector: 'app-profile-feed',
@@ -37,7 +37,7 @@ export class ProfileFeedComponent {
       id: new FormControl(''),
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      tag: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
     });
 
     this.scheduleForm = new FormGroup({
@@ -47,7 +47,8 @@ export class ProfileFeedComponent {
       timeEnd: new FormControl('', [Validators.required]),
     });
 
-    this.postList = this.postService.getPosts();
+    // this.postList = this.postService.getPosts(); - 
+    this.talentService.getTalents().subscribe(talentsData => this.talentList = talentsData);
   }
   
   get name(){
@@ -58,8 +59,8 @@ export class ProfileFeedComponent {
     return this.talentForm.get('description')!;
   }
 
-  get tag(){
-    return this.talentForm.get('tag')!;
+  get category(){
+    return this.talentForm.get('category')!;
   }
 
   get day () {
@@ -74,24 +75,21 @@ export class ProfileFeedComponent {
     return this.scheduleForm.get('timeEnd')!;
   }
 
-  talentSubmit(formData: any, formDirective: FormGroupDirective): void {
+  async talentSubmit(formData: any, formDirective: FormGroupDirective) {
     if (this.talentForm.invalid) {
       return;
     }
 
-    console.log(this.talentForm.value);
-    this.talentForm.value['id'] = this.talentLastId;
-    this.talentLastId++;
-    
-    this.talentList.push(this.talentForm.value);
-    console.log(this.talentList);
+    const newTalent = await this.talentService.createTalent(this.talentForm.value);
+    this.talentList.push(newTalent);
 
     formDirective.resetForm();
     this.talentForm.reset();
   }
 
   handleRemoveTalent(talentId: number){
-    this.talentList = this.talentService.removeTalent(talentId, this.talentList);
+    this.talentService.removeTalent(talentId).subscribe();
+    this.talentList = this.talentList.filter((t) => t.id !== talentId);
   }
 
   scheduleSubmit(formData: any, formDirective: FormGroupDirective): void {
