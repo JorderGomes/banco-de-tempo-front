@@ -8,9 +8,11 @@
     <div class="card-body">
         <div id="user-data" class="update-box">
             <h6>Atualizar contato</h6>
-            <input type="text" placeholder="Nome de usuário" id="" class="bank-input">
-            <input type="email" placeholder="Email" id="" class="bank-input" >
-            <button class="btn btn-primary">Salvar</button>
+            <input type="text" (input)="verifyDataBlank()" [(ngModel)]="username" placeholder="Nome de usuário" id="" class="bank-input">
+            <input type="email" (input)="verifyDataBlank()" [(ngModel)]="email" placeholder="Email" id="" class="bank-input" >
+            <button class="btn btn-primary" [disabled]="!dataNotBlank" (click)="updateContactData()">
+                Salvar
+            </button>
         </div>
         <span class="divider"></span>
         <div id="user-password" class="update-box">

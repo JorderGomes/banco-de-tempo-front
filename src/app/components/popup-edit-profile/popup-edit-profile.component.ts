@@ -21,6 +21,10 @@ export class PopupEditProfileComponent {
   newPassword: string = "";
   confirmPassword: string = "";
 
+  dataNotBlank: boolean = false;
+  username: string = "";
+  email: string = "";
+
   constructor(public userService: UserService){}
   
   ngOnInit(){
@@ -39,6 +43,10 @@ export class PopupEditProfileComponent {
     this.passwordConfirmed = (this.newPassword === this.confirmPassword) && (this.newPassword !== "");
   }
 
+  verifyDataBlank(){
+    this.dataNotBlank = this.username !== "" && this.email !== "";
+  }
+
   async deleteAccount() {
     await this.userService.removeUser(this.currentUser.id!).subscribe();
     this.userEmail = "";
@@ -49,5 +57,16 @@ export class PopupEditProfileComponent {
     this.newPassword = "";
     this.confirmPassword = "";
   }    
+
+  updateContactData(){
+    this.currentUser.name = this.username;
+    this.currentUser.email = this.email;
+    this.userService.editUser(this.currentUser).subscribe(newUser => {
+      this.currentUser = newUser;
+    });
+    this.userService.setLocalUser(this.currentUser);
+    this.username = "";
+    this.email = "";
+  }
 
 }

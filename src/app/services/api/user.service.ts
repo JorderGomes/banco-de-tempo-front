@@ -45,13 +45,11 @@ export class UserService {
   }
 
   updatePassword(id: number, newPassword: string){
-    const url = `${this.apiResourceUrl}/${id}/update-password`;
-    let params = new HttpParams();
-    params = params.append("newPassword", newPassword);
-    return this.http.patch(url, { params });
+    const url = `${this.apiResourceUrl}/${id}/update-password?newPassword=${newPassword}`;
+    return this.http.patch(url, {});
   }
 
-  private setLocalUser (user:User){
+  public setLocalUser (user:User){
     this.localStorage.setItem(this.userKey, user);
   }
 
