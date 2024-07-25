@@ -12,6 +12,8 @@ export class TalentService {
 
   private baseApiUrl:string = environment.baseApiUrl;
   private apiResourceUrl: string = `${this.baseApiUrl}/talent`;
+  talentList = [];
+  // userId = 
 
   constructor(private http: HttpClient, private userService: UserService) {}
 
@@ -22,8 +24,17 @@ export class TalentService {
     return newTalent;
   }
 
-  getTalents(): Observable<Talent[]>{
-    return this.http.get<Talent[]>(this.apiResourceUrl);
+  getTalents(): Observable<Talent[]> {
+    const user =  this.userService.getLocalUser();
+    let userId;
+    if (user === null) {
+      userId = 0;
+    } else {
+      userId = user!.id;
+    }
+    const url = `${this.apiResourceUrl}/user/${userId}`;
+    return this.http.get<Talent[]>(url) ;
+    // return userList;
   }
   
   getTalent(id: number): Observable<Talent>{

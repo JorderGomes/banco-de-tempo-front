@@ -22,10 +22,34 @@ export class StorageService {
         const jsonString = localStorage.getItem(key);
         return jsonString ? JSON.parse(jsonString) : null;
       } else {
-        // console.error('localStorage is not available.');
         return null;
       }
     }
+    
+    
+
+    // getItem<T>(key: string): T | null {
+    //   // Timeout em milissegundos para evitar um loop infinito
+    //   const maxWaitTime = 5000;
+    //   const intervalTime = 50;
+    //   const startTime = Date.now();
+    
+    //   // Loop até que localStorage esteja disponível ou o tempo máximo tenha sido atingido
+    //   while (typeof localStorage === 'undefined') {
+    //     if (Date.now() - startTime > maxWaitTime) {
+    //       console.log('localStorage is not available.');
+    //       return null;
+    //     }
+    //     // Pausar o loop por um curto período para evitar um loop de alta CPU
+    //     const endTime = Date.now() + intervalTime;
+    //     while (Date.now() < endTime) {}
+    //   }
+    
+    //   // Após confirmar que localStorage está disponível, obtenha o item
+    //   const jsonString = localStorage.getItem(key);
+    //   return jsonString ? JSON.parse(jsonString) : null;
+    // }
+    
   
     // Remover item do localStorage
     removeItem(key: string): void {
