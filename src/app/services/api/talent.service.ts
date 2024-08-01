@@ -51,8 +51,4 @@ export class TalentService {
     return this.http.put<Talent>(url, newTalent);
   }
 
-  // removeTalent(id: number, talentList: Talent[]){
-  //   return talentList.filter(currentTalent => currentTalent.id !== id);
-  // }
-
 }

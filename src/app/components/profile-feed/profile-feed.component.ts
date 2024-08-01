@@ -4,9 +4,9 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Schedule } from '../../interfaces/entities/schedule';
 import { Talent } from '../../interfaces/entities/talent';
 import { Post } from '../../interfaces/post';
+import { ScheduleService } from '../../services/api/schedule.service';
 import { TalentService } from '../../services/api/talent.service';
 import { PostsService } from '../../services/posts.service';
-import { ScheduleService } from '../../services/schedule.service';
 
 @Component({
   selector: 'app-profile-feed',
@@ -42,13 +42,22 @@ export class ProfileFeedComponent {
 
     this.scheduleForm = new FormGroup({
       id: new FormControl(''),
-      day: new FormControl('', [Validators.required]),
-      timeInit: new FormControl('', [Validators.required]),
+      weekDay: new FormControl('', [Validators.required]),
+      timeBeguin: new FormControl('', [Validators.required]),
       timeEnd: new FormControl('', [Validators.required]),
     });
 
     // this.postList = this.postService.getPosts(); - 
-    this.talentService.getTalents().subscribe(talentsData => this.talentList = talentsData);
+    this.talentService.getTalents().subscribe(
+      talentsData => this.talentList = talentsData
+    );
+    
+    this.scheduleService.getSchedules().subscribe(
+      schedulesData => {
+        console.log(schedulesData);
+        this.scheduleList = schedulesData;
+      }
+    );
   }
   
   get name(){
@@ -63,12 +72,12 @@ export class ProfileFeedComponent {
     return this.talentForm.get('category')!;
   }
 
-  get day () {
-    return this.scheduleForm.get('day')!;
+  get weekDay () {
+    return this.scheduleForm.get('weekDay')!;
   }
 
-  get timeInit () {
-    return this.scheduleForm.get('timeInit')!;
+  get timeBeguin () {
+    return this.scheduleForm.get('timeBeguin')!;
   }
 
   get timeEnd () {
@@ -92,16 +101,20 @@ export class ProfileFeedComponent {
     this.talentList = this.talentList.filter((t) => t.id !== talentId);
   }
 
-  scheduleSubmit(formData: any, formDirective: FormGroupDirective): void {
+  async scheduleSubmit(formData: any, formDirective: FormGroupDirective) {
     if (this.scheduleForm.invalid) {
       return;
     }
 
-    console.log(this.scheduleForm.value);
-    this.scheduleForm.value['id'] = this.scheduleLastId;
-    this.scheduleLastId++;
+    const newSchedule: Schedule = this.scheduleForm.value;
 
-    this.scheduleList.push(this.scheduleForm.value);
+    newSchedule.timeBeguin = newSchedule.timeBeguin.concat(":00");
+    newSchedule.timeEnd = newSchedule.timeEnd.concat(":00");
+
+    console.log(newSchedule);
+
+    const savedSchedule = await this.scheduleService.createSchedule(newSchedule);
+    this.scheduleList.push(savedSchedule);
     console.log(this.scheduleList);
 
     formDirective.resetForm();
@@ -109,6 +122,7 @@ export class ProfileFeedComponent {
   }
 
   handleRemoveSchedule(scheduleId: number) {
-    this.scheduleList = this.scheduleService.removeSchedule(scheduleId, this.scheduleList);
+    this.scheduleService.removeSchedule(scheduleId).subscribe();
+    this.scheduleList = this.scheduleList.filter((s) => s.id !== scheduleId);
   }
 }

@@ -5,10 +5,10 @@
                 <a class="nav-link"  data-bs-toggle="tab" href="#postagens">Postagens</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#talentos">Talentos</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#talentos">Talentos</a>
             </li>
             <li class="nav-item profile-feed-tab">
-                <a class="nav-link" data-bs-toggle="tab" href="#horarios">Horários</a>
+                <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#horarios">Horários</a>
             </li>
             <li class="nav-item profile-feed-tab">
                 <a class="nav-link " data-bs-toggle="tab" href="#solicitacoes">Favores</a>
@@ -24,7 +24,7 @@
                 [urlPostImage]="post.urlPostImage"
             ></app-post>
         </div>
-        <div class="tab-pane active" id="talentos">
+        <div class="tab-pane" id="talentos">
             <form (ngSubmit)="talentSubmit(talentForm, formTalent)" [formGroup]="talentForm" #formTalent="ngForm" id="talent-form" class="inline-form">
                 <div class="bank-input-group">
                     <input 
@@ -97,20 +97,20 @@
                 </table>
             </div>
         </div>
-        <div class="tab-pane" id="horarios">
+        <div class="tab-pane active" id="horarios">
             <form (ngSubmit)="scheduleSubmit(scheduleForm, formSchedule)" [formGroup]="scheduleForm" #formSchedule="ngForm"  id="schedule-form" class="inline-form">
                 <div class="bank-input-group">
-                    <select name="day" id="day" class="bank-input" formControlName="day">
-                        <option value="Domingo">Domingo</option>
-                        <option value="Segunda">Segunda</option>
-                        <option value="Terça">Terça</option>
-                        <option value="Quarta">Quarta</option>
-                        <option value="Quinta">Quinta</option>
-                        <option value="Sexta">Sexta</option>
-                        <option value="Sábado">Sábado</option>
+                    <select name="weekDay" id="weekDay" class="bank-input" formControlName="weekDay">
+                        <option value="DOMINGO">Domingo</option>
+                        <option value="SEGUNDA">Segunda</option>
+                        <option value="TERÇA">Terça</option>
+                        <option value="QUARTA">Quarta</option>
+                        <option value="QUINTA">Quinta</option>
+                        <option value="SEXTA">Sexta</option>
+                        <option value="SÁBADO">Sábado</option>
                     </select>
-                    <label for="day">Dia da semana</label>
-                    <div *ngIf="day.invalid && formSchedule.submitted">
+                    <label for="weekDay">Dia da semana</label>
+                    <div *ngIf="weekDay.invalid && formSchedule.submitted">
                         <p>O dia deve ser selecionado!</p>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                         type="time" 
                         id="time-init" 
                         name="time-init" 
-                        formControlName="timeInit"
+                        formControlName="timeBeguin"
                         step="3600" 
                         min="00:00" 
                         max="23:00" 
@@ -127,7 +127,7 @@
                         required
                         >
                     <label for="time-init">Hora inicial</label>
-                    <div *ngIf="timeInit.invalid && formSchedule.submitted">
+                    <div *ngIf="timeBeguin.invalid && formSchedule.submitted">
                         <p>Informe a hora inicial!</p>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let schedule of scheduleList" class="schedule-item">
-                        <td class="">{{schedule.day}}</td>
+                        <td class="">{{schedule.weekDay}}</td>
                         <td class="">{{schedule.timeBeguin}}</td>
                         <td class="">{{schedule.timeEnd}}</td>
                         <td class="text-center">

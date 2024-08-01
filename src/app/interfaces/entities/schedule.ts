@@ -1,6 +1,6 @@
 export interface Schedule {
     id?: number,
-    day: string,
+    weekDay: string,
     timeBeguin: string,
     timeEnd: string,
 }
