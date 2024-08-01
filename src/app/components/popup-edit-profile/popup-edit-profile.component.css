@@ -1,0 +1,30 @@
+#edit-profile {
+    min-width: 300px;
+    width: 60%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.card-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-header h5 {
+    margin-bottom: 0;
+}
+
+.update-box .bank-input {
+    border: solid 0.5px var(--bank-bg-dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.divider {
+    height: 0;
+    width: 100%;
+    border: solid 0.1px var(--bank-bg-dark-color);
+    display: block;
+    margin: 1rem 0;
+}

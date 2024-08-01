@@ -1,0 +1,35 @@
+#requests-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.bank-input-group {
+    box-sizing: border-box;
+    flex: 1 1 calc(50% - 0.5rem); 
+}
+  
+.bank-input-group.col-6 {
+    max-width: calc(50% - 0.5rem); 
+}
+
+.status-pendente{
+    background-color: var(--bank-emphasis-color);
+}
+
+.status-recusada{
+    background-color: var(--bank-secondary-color);
+}
+
+.status-cancelada{
+    background-color: var(--bank-danger-color);
+}
+
+.status-aceita{
+    background-color: var(--bank-primary-color);
+}
+
+.status-finalizada{
+    background-color: var(--bank-dark-color);
+}
+

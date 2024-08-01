@@ -1,0 +1,14 @@
+#user-card {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-header img {
+    width: 30%;
+    height: auto;
+    border-radius: 100%;
+}

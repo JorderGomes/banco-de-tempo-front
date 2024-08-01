@@ -1,0 +1,86 @@
+<div id="main-feed" class="full-page default-page">
+    <app-navbar></app-navbar>
+    <div class="page-content">
+        <div id="form-search-container" class="card">
+            <form 
+                (ngSubmit)="searchFavor(searchForm, formSearch)"
+                [formGroup]="searchForm"
+                #formSearch="ngForm"
+                id="search-form" class=""
+                >
+
+                <div class="row gx-2">
+                    <div class="bank-input-group col-6">
+                        <label for="tag">Categoria</label>
+                        <select name="tag" id="tag" class="bank-input" formControlName="tag" >
+                            <option value="children_and_youth">Crianças e jovens</option>
+                            <option value="adult_supervision">Acompanhamento de adultos</option>
+                            <option value="home_and_domestic_life">Casa e vida doméstica</option>
+                            <option value="animals_and_plants">Animais e plantas</option>
+                            <option value="manual_activities">Atividades manuais</option>
+                            <option value="administrative_activities">Atividades administrativas</option>
+                            <option value="teaching_and_learning">Ensino e aprendizagem</option>
+                            <option value="beauty_and_personal_care">Beleza e cuidados pessoais</option>
+                        </select>
+                        <div *ngIf="tag.invalid && formSearch.submitted">
+                            <p>Selecione uma categoria!</p>
+                        </div>
+                    </div>
+    
+                    <div class="bank-input-group col-3">
+                        <label for="day">Dia da semana</label>
+                        <select name="day" id="day" class="bank-input" formControlName="day">
+                            <option value="Domingo">Domingo</option>
+                            <option value="Segunda">Segunda</option>
+                            <option value="Terça">Terça</option>
+                            <option value="Quarta">Quarta</option>
+                            <option value="Quinta">Quinta</option>
+                            <option value="Sexta">Sexta</option>
+                            <option value="Sábado">Sábado</option>
+                        </select>
+                        <div *ngIf="day.invalid && formSearch.submitted">
+                            <p>O dia deve ser selecionado!</p>
+                        </div>
+                    </div>
+    
+                    <div class="bank-input-group col-3">
+                        <label for="time-init">Hora inicial</label>
+                        <input 
+                            type="time" 
+                            id="time-init" 
+                            name="time-init" 
+                            formControlName="timeInit"
+                            step="3600" 
+                            min="00:00" 
+                            max="23:00" 
+                            class="bank-input"
+                            required
+                            >
+                        <div *ngIf="timeInit.invalid && formSearch.submitted">
+                            <p>Informe a hora inicial!</p>
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="bank-input-group">
+                    <button type="submit" class="primary-btn">
+                        <fa-icon [icon]="faMagnifyingGlass" class="text-light"></fa-icon>
+                        Pesquisar
+                    </button>
+                </div>
+
+                <!-- <input type="submit" value="Pesquisar" class="primary-btn"> -->
+                
+            </form>
+        </div>
+
+        <div id="feed" class="card flex-fill">
+            <div class="feed-body">
+                    <app-user-card 
+                        *ngFor="let userData of userDataList" 
+                        [userData]="userData">
+                    </app-user-card>
+            </div>
+        </div>
+    </div>
+</div>
