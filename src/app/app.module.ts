@@ -17,6 +17,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { RequestsBodyComponent } from './components/requests-body/requests-body.component';
 import { PopupCanvaComponent } from './components/popup-canva/popup-canva.component';
 import { PopupEditProfileComponent } from './components/popup-edit-profile/popup-edit-profile.component';
+import { SearchTalentComponent } from './components/search-talent/search-talent.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PopupEditProfileComponent } from './components/popup-edit-profile/popup
     UserCardComponent,
     RequestsBodyComponent,
     PopupCanvaComponent,
-    PopupEditProfileComponent
+    PopupEditProfileComponent,
+    SearchTalentComponent
   ],
   imports: [
     BrowserModule,
