@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { UserCardService } from '../../services/user-card.service';
@@ -13,6 +13,7 @@ export class SearchTalentComponent {
 
   searchForm!: FormGroup;
   faMagnifyingGlass = faMagnifyingGlass;
+  @Output() formSubmitted = new EventEmitter<any>();
 
   constructor (
     public userCardService: UserCardService
@@ -46,8 +47,10 @@ export class SearchTalentComponent {
       return;
     }
 
-    console.log(this.searchForm.value);
-    console.log(formData);
+    // 
+    console.log(this.searchForm.value['timeInit']);
+    this.searchForm.value['timeInit'] = this.searchForm.value['timeInit'].split(":")[0] + ":00";
+    this.formSubmitted.emit(this.searchForm.value);
 
     formDirective.resetForm();
     this.searchForm.reset();
