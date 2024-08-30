@@ -2,13 +2,22 @@
     <app-navbar></app-navbar>
     <div class="page-content">
         <app-search-talent (formSubmitted)="handleFormSubmittion($event)" ></app-search-talent>
-        <button class="primary-btn" (click)="showData()">Show data</button>
+        <!-- <button class="primary-btn" (click)="showData()">Show data</button> -->
         <div id="feed" class="card flex-fill">
             <div class="feed-body">
-                    <app-user-card 
-                        *ngFor="let userData of userDataList" 
-                        [userData]="userData">
-                    </app-user-card>
+                    <div *ngIf="userDataList.length > 0; else emptyUserData">
+                        <app-user-card 
+                            *ngFor="let userData of userDataList" 
+                            [userData]="userData">
+                        </app-user-card>
+                    </div>
+                    <ng-template #emptyUserData>
+                        <app-void-state 
+                            [message]="'Talentos não encontrados'"
+                            [icon]="faIcon"
+                            >
+                        </app-void-state>
+                    </ng-template>
             </div>
         </div>
     </div>

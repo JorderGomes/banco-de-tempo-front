@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserCardData } from '../../../interfaces/user-card-data';
 import { UserCardService } from '../../../services/user-card.service';
+import { faGears } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class FeedComponent {
 
   userDataList: UserCardData[] = [];
   searchData: any[] = [];
+  faIcon = faGears;
 
   constructor (public userCardService: UserCardService){}
 
