@@ -2,7 +2,6 @@
     <app-navbar></app-navbar>
     <div class="page-content">
         <app-search-talent (formSubmitted)="handleFormSubmittion($event)" ></app-search-talent>
-        <!-- <button class="primary-btn" (click)="showData()">Show data</button> -->
         <div id="feed" class="card flex-fill">
             <div class="feed-body">
                     <div *ngIf="userDataList.length > 0; else emptyUserData">
