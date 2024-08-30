@@ -1,0 +1,16 @@
+#void-state {
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+#void-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+}
+
+#void-state p {
+    margin-bottom: 0;
+}

@@ -1,0 +1,20 @@
+#user-card {
+    /* width: 300px; */
+    margin: 0 auto;
+    flex-direction: row;
+    /* align-items: center; */
+}
+
+.card-header {
+    text-align: center;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-header img {
+    width: 30%;
+    height: auto;
+    border-radius: 100%;
+}

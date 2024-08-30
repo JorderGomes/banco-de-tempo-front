@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+  popupCanvaIsVisible:boolean = false;
+
+  togglePopup(){
+    this.popupCanvaIsVisible = !this.popupCanvaIsVisible;
+  }
+
 }

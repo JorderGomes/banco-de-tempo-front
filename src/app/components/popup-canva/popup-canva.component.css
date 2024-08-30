@@ -1,0 +1,16 @@
+#popup-canva {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+#popup-canva .popup-wrap {
+    width: 100%;
+}

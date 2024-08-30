@@ -6,7 +6,7 @@
 .card-header-tabs {
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .profile-feed-tab{
@@ -45,11 +45,6 @@
     flex: 0 0 calc(2 / 12 * 100%);
     box-sizing: border-box;
 }
-
-/* .bank-btn-group .primary-btn { */
-    /* height: 100%; */
-    /* margin-bottom: 15px; */
-/* } */
 
 .talent-item td {
     align-items: center;

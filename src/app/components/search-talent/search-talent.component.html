@@ -1,0 +1,71 @@
+<div id="form-search-container" class="card">
+    <form 
+        (ngSubmit)="searchFavor(searchForm, formSearch)"
+        [formGroup]="searchForm"
+        #formSearch="ngForm"
+        id="search-form" class=""
+        >
+
+        <div class="row gx-2">
+            <div class="bank-input-group col-6">
+                <label for="tag">Categoria</label>
+                <select name="tag" id="tag" class="bank-input" formControlName="tag" >
+                    <option value="CHILDREN_AND_YOUTH">Crianças e jovens</option>
+                    <option value="ADULT_SUPERVISION">Acompanhamento de adultos</option>
+                    <option value="HOME_AND_DOMESTIC_LIFE">Casa e vida doméstica</option>
+                    <option value="ANIMALS_AND_PLANTS">Animais e plantas</option>
+                    <option value="MANUAL_ACTIVITIES">Atividades manuais</option>
+                    <option value="ADMINISTRATIVE_ACTIVITIES">Atividades administrativas</option>
+                    <option value="TEACHING_AND_LEARNING">Ensino e aprendizagem</option>
+                    <option value="BEAUTY_AND_PERSONAL_CARE">Beleza e cuidados pessoais</option>
+                </select>
+                <div *ngIf="tag.invalid && formSearch.submitted">
+                    <p>Selecione uma categoria!</p>
+                </div>
+            </div>
+
+            <div class="bank-input-group col-3">
+                <label for="day">Dia da semana</label>
+                <select name="day" id="day" class="bank-input" formControlName="day">
+                    <option value="DOMINGO">Domingo</option>
+                    <option value="SEGUNDA">Segunda</option>
+                    <option value="TERÇA">Terça</option>
+                    <option value="QUARTA">Quarta</option>
+                    <option value="QUINTA">Quinta</option>
+                    <option value="SEXTA">Sexta</option>
+                    <option value="SÁBADO">Sábado</option>
+                </select>
+                <div *ngIf="day.invalid && formSearch.submitted">
+                    <p>O dia deve ser selecionado!</p>
+                </div>
+            </div>
+
+            <div class="bank-input-group col-3">
+                <label for="time-init">Hora inicial</label>
+                <input 
+                    type="time" 
+                    id="time-init" 
+                    name="time-init" 
+                    formControlName="timeInit"
+                    step="3600" 
+                    min="00:00" 
+                    max="23:00" 
+                    class="bank-input"
+                    required
+                    >
+                <div *ngIf="timeInit.invalid && formSearch.submitted">
+                    <p>Informe a hora inicial!</p>
+                </div>
+            </div>
+        
+        </div>
+        <div class="bank-input-group">
+            <button type="submit" class="bank-btn primary-btn">
+                <fa-icon [icon]="faMagnifyingGlass" class="text-light"></fa-icon>
+                Pesquisar
+            </button>
+        </div>
+
+        
+    </form>
+</div>

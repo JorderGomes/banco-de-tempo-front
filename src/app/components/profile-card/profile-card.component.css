@@ -11,6 +11,16 @@
 .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     height: 100%;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }

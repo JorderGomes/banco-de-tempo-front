@@ -1,0 +1,11 @@
+#feed {
+    padding: 1rem;
+}
+
+@media (max-width: 768px){
+
+    #search-form .line {
+        flex-direction: column;
+    }
+
+}
