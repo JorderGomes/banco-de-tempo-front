@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { UserCardData } from '../../../interfaces/user-card-data';
 import { UserCardService } from '../../../services/user-card.service';
+import { faGears } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,48 +11,25 @@ import { UserCardService } from '../../../services/user-card.service';
 })
 export class FeedComponent {
 
-  searchForm!: FormGroup;
-  faMagnifyingGlass = faMagnifyingGlass;
   userDataList: UserCardData[] = [];
+  searchData: any[] = [];
+  faIcon = faGears;
 
-  constructor (
-    public userCardService: UserCardService
-  ){}
+  constructor (public userCardService: UserCardService){}
 
   ngOnInit(): void {
-    this.searchForm = new FormGroup({
-      tag: new FormControl('', [Validators.required]),
-      day: new FormControl('', [Validators.required]),
-      timeInit: new FormControl('', [Validators.required]),
-    });
 
     this.userDataList = this.userCardService.getUserCardData();
 
   }
 
-  get day() {
-    return this.searchForm.get('day')!;
+  handleFormSubmittion(data: any){
+    this.searchData.push(data);
+    console.log("handleFormSubmition");
   }
 
-  get timeInit() {
-    return this.searchForm.get('timeInit')!;
+  showData(){
+    console.log(this.searchData);
   }
-
-  get tag() {
-    return this.searchForm.get('tag')!;
-  }
-
-  searchFavor(formData: any, formDirective: FormGroupDirective): void {
-    if (this.searchForm.invalid) {
-      return;
-    }
-
-    console.log(this.searchForm.value);
-    console.log(formData);
-
-    formDirective.resetForm();
-    this.searchForm.reset();
-  }
-
 
 }
