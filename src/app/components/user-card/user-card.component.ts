@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { UserCardData } from '../../interfaces/user-card-data';
+import { Talent } from '../../interfaces/entities/talent';
 
 @Component({
   selector: 'app-user-card',
@@ -8,6 +9,6 @@ import { UserCardData } from '../../interfaces/user-card-data';
 })
 export class UserCardComponent {
 
-  @Input() userData!: UserCardData;
+  @Input() talentData!: Talent;
 
 }

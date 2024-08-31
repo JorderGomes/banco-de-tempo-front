@@ -12,4 +12,9 @@
 
 .bank-input {
     border: 0.2px solid var(--bs-border-color-translucent);
+    height: 45px;
+}
+
+#search-talent-btn {
+    margin-top: 24px;
 }

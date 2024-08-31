@@ -1,8 +1,8 @@
 <div id="user-card" class="card">
     <div class="card-header col-3">
-        <!-- <img src={{userData.urlUserImage}} alt=""> -->
-        <div>{{userData.talentName}}</div>
-        <div>{{userData.userName}}</div>
+        <!-- <img src={{talentData.urlUserImage}} alt=""> -->
+        <div>{{talentData.name}}</div>
+        <div>{{talentData.user.name}}</div>
     </div>
     <div class="card-body col-9">
         <form action="">
@@ -10,7 +10,7 @@
                 <label for="shcedule">Horário</label>
                 <select name="schedule" id="schedule" class="bank-input">
                     <option value="" disabled selected hidden>Selecione um horário</option>
-                    <option *ngFor="let entry of userData.schedules | keyvalue" [value]="entry.value">{{entry.key}} </option>
+                    <!-- <option *ngFor="let entry of talentData.schedules | keyvalue" [value]="entry.value">{{entry.key}} </option> -->
                 </select>
             </div>
 

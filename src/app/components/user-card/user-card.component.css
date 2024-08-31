@@ -1,13 +1,11 @@
 #user-card {
-    /* width: 300px; */
     margin: 0 auto;
     flex-direction: row;
-    /* align-items: center; */
+    margin-bottom: 1rem;
 }
 
 .card-header {
     text-align: center;
-    /* align-items: center; */
     display: flex;
     flex-direction: column;
     justify-content: center;
