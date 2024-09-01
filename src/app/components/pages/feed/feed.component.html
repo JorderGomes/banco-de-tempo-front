@@ -4,7 +4,7 @@
         <app-search-talent (formSubmitted)="handleFormSubmittion($event)" ></app-search-talent>
         <div id="feed" class="card flex-fill">
             <div class="feed-body">
-                    <div *ngIf="userDataList.length > 0; else emptyUserData">
+                    <div *ngIf="searchData.length > 0; else emptyUserData">
                         <app-user-card 
                             *ngFor="let talentData of searchData" 
                             [talentData]="talentData">

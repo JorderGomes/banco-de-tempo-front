@@ -8,9 +8,24 @@
         <form action="">
             <div class="bank-input-group">
                 <label for="shcedule">Horário</label>
-                <select name="schedule" id="schedule" class="bank-input">
+                <select 
+                    name="schedule" 
+                    id="schedule" 
+                    class="bank-input" 
+                    (focus)="getSchedules(talentData.user.id!)">
                     <option value="" disabled selected hidden>Selecione um horário</option>
-                    <!-- <option *ngFor="let entry of talentData.schedules | keyvalue" [value]="entry.value">{{entry.key}} </option> -->
+                    <option
+                        *ngFor="let schedule of talentData.user.schedules"
+                        [value]="schedule.id"
+                    >
+                        {{
+                            schedule.weekDay[0] + schedule.weekDay.substring(1).toLowerCase() 
+                            + " de " 
+                            + schedule.timeBeguin 
+                            + " até " 
+                            + schedule.timeEnd
+                        }}
+                    </option>
                 </select>
             </div>
 
