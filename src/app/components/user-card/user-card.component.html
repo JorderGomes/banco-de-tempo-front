@@ -5,17 +5,23 @@
         <div>{{talentData.user.name}}</div>
     </div>
     <div class="card-body col-9">
-        <form action="">
+        <form
+            (ngSubmit)="requestFavor(requestForm, formRequest)"
+            [formGroup]="requestForm"
+            #formRequest="ngForm"
+            id="request-form"
+            >
             <div class="bank-input-group">
                 <label for="shcedule">Horário</label>
                 <select 
+                    formControlName="scheduleId"
                     name="schedule" 
                     id="schedule" 
                     class="bank-input">
                     <option value="" disabled selected hidden>Selecione um horário</option>
                     <option
                         *ngFor="let schedule of talentData.user.schedules"
-                        [value]="schedule.id">
+                        [ngValue]="schedule.id">
                         {{
                             schedule.weekDay[0] + schedule.weekDay.substring(1).toLowerCase() 
                             + " de " 
@@ -30,6 +36,7 @@
             <div class="bank-input-group">
                 <label for="qtdHours">Quantas horas deseja solicitar?</label>
                 <input 
+                    formControlName="qtdHours"
                     type="number" 
                     id="qtdHours" 
                     name="qtdHours" 
@@ -40,11 +47,11 @@
                 >
             </div> 
             <div class="bank-input-group">
-                <input id="talentId" type="hidden" value={{talentData.id}}>
+                <input formControlName="talentId" id="talentId" type="hidden">
                 
-                <input id="requiredId" type="hidden" value={{talentData.user.id}}>
+                <input formControlName="requiredId" id="requiredId" type="hidden">
                 
-                <input id="applicantId" type="hidden" value={{currentUser.id}}>
+                <input formControlName="applicantId" id="applicantId" type="hidden">
                 
             </div>
             <div class="bank-input-group">

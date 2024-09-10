@@ -30,14 +30,10 @@ export class FeedComponent {
 
   handleFormSubmittion(data: any){
     this.talentService.searchTalents(data['tag']).subscribe((result) => {
-      console.log(result);
-      
       this.searchData = result;
     });
   }
 
-  showData(){
-    console.log(this.searchData);
-  }
+
 
 }

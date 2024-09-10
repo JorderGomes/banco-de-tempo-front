@@ -6,6 +6,7 @@ import { Talent } from '../../interfaces/entities/talent';
 import { ScheduleService } from '../../services/api/schedule.service';
 import { User } from '../../interfaces/entities/user';
 import { UserService } from '../../services/api/user.service';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-card',
@@ -15,6 +16,7 @@ import { UserService } from '../../services/api/user.service';
 export class UserCardComponent {
   
   @Input() talentData!: Talent;
+  requestForm!: FormGroup;
   currentUser: User = this.userService.getLocalUser()!;
   
   constructor(
@@ -22,14 +24,40 @@ export class UserCardComponent {
     public userService: UserService
   ){}
 
-  getSchedules(userId: number) {
-    console.log(this.talentData);
-    if (!this.talentData.user.schedules){
-      this.scheduleService.searchSchedule(userId).subscribe((result) => {
-        console.log(result);
-        this.talentData.user.schedules = result;
-      });
-    }
+  ngOnInit(): void {
+    this.requestForm = new FormGroup({
+      applicantId: new FormControl(this.currentUser.id),
+      requiredId: new FormControl(this.talentData.user.id),
+      talentId: new FormControl(this.talentData.id),
+      
+      scheduleId: new FormControl('', [Validators.required]),
+      qtdHours: new FormControl('', [Validators.required])
+    });
   }
+
+  get applicantId() {
+    return this.requestForm.get('applicantId')!;
+  }
+  get requiredId() {
+    return this.requestForm.get('requiredId')!;
+  }
+  get talentId() {
+    return this.requestForm.get('talentId')!;
+  }
+  get scheduleId() {
+    return this.requestForm.get('scheduleId')!;
+  }
+  get qtdHours() {
+    return this.requestForm.get('qtdHours')!;
+  }
+
+  requestFavor(formData: any, formDirective: FormGroupDirective){
+    console.log(this.requestForm.value);
+    
+    formDirective.resetForm();
+    this.requestForm.reset();
+  }
+
+
 
 }
