@@ -6,6 +6,6 @@ export interface User {
     email: string,
     password: string,
     balance: number,
-    schedules?: Schedule[],
+    schedules: Schedule[],
     schedulesString?: string[]
 }

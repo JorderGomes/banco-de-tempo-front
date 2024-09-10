@@ -11,13 +11,11 @@
                 <select 
                     name="schedule" 
                     id="schedule" 
-                    class="bank-input" 
-                    (focus)="getSchedules(talentData.user.id!)">
+                    class="bank-input">
                     <option value="" disabled selected hidden>Selecione um horário</option>
                     <option
                         *ngFor="let schedule of talentData.user.schedules"
-                        [value]="schedule.id"
-                    >
+                        [value]="schedule.id">
                         {{
                             schedule.weekDay[0] + schedule.weekDay.substring(1).toLowerCase() 
                             + " de " 
@@ -41,6 +39,14 @@
                     required
                 >
             </div> 
+            <div class="bank-input-group">
+                <input id="talentId" type="hidden" value={{talentData.id}}>
+                
+                <input id="requiredId" type="hidden" value={{talentData.user.id}}>
+                
+                <input id="applicantId" type="hidden" value={{currentUser.id}}>
+                
+            </div>
             <div class="bank-input-group">
                 <input type="submit" value="Solicitar" class="bank-btn secondary-btn">
             </div>

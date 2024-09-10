@@ -41,7 +41,7 @@ export class TalentService {
     const uri = `${this.apiResourceUrl}`;
     let params = new HttpParams();
     params = params.append("category", tag);
-    params = params.append("name", "a");
+    // params = params.append("name", "a");
     return this.http.get<Talent[]>(uri, {params});
   }
 

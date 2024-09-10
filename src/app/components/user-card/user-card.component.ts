@@ -4,6 +4,8 @@
 import { Component, Input } from '@angular/core';
 import { Talent } from '../../interfaces/entities/talent';
 import { ScheduleService } from '../../services/api/schedule.service';
+import { User } from '../../interfaces/entities/user';
+import { UserService } from '../../services/api/user.service';
 
 @Component({
   selector: 'app-user-card',
@@ -13,9 +15,11 @@ import { ScheduleService } from '../../services/api/schedule.service';
 export class UserCardComponent {
   
   @Input() talentData!: Talent;
+  currentUser: User = this.userService.getLocalUser()!;
   
   constructor(
-    public scheduleService: ScheduleService
+    public scheduleService: ScheduleService,
+    public userService: UserService
   ){}
 
   getSchedules(userId: number) {
