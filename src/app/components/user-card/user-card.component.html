@@ -1,22 +1,42 @@
 <div id="user-card" class="card">
     <div class="card-header col-3">
-        <!-- <img src={{userData.urlUserImage}} alt=""> -->
-        <div>{{userData.talentName}}</div>
-        <div>{{userData.userName}}</div>
+        <!-- <img src={{talentData.urlUserImage}} alt=""> -->
+        <div>{{talentData.name}}</div>
+        <div>{{talentData.user.name}}</div>
     </div>
     <div class="card-body col-9">
-        <form action="">
+        <form
+            (ngSubmit)="requestFavor(requestForm, formRequest)"
+            [formGroup]="requestForm"
+            #formRequest="ngForm"
+            id="request-form"
+            >
             <div class="bank-input-group">
                 <label for="shcedule">Horário</label>
-                <select name="schedule" id="schedule" class="bank-input">
+                <select 
+                    formControlName="scheduleId"
+                    name="schedule" 
+                    id="schedule" 
+                    class="bank-input">
                     <option value="" disabled selected hidden>Selecione um horário</option>
-                    <option *ngFor="let entry of userData.schedules | keyvalue" [value]="entry.value">{{entry.key}} </option>
+                    <option
+                        *ngFor="let schedule of talentData.user.schedules"
+                        [ngValue]="schedule.id">
+                        {{
+                            schedule.weekDay[0] + schedule.weekDay.substring(1).toLowerCase() 
+                            + " de " 
+                            + schedule.timeBeguin 
+                            + " até " 
+                            + schedule.timeEnd
+                        }}
+                    </option>
                 </select>
             </div>
 
             <div class="bank-input-group">
                 <label for="qtdHours">Quantas horas deseja solicitar?</label>
                 <input 
+                    formControlName="qtdHours"
                     type="number" 
                     id="qtdHours" 
                     name="qtdHours" 
@@ -26,6 +46,14 @@
                     required
                 >
             </div> 
+            <div class="bank-input-group">
+                <input formControlName="talentId" id="talentId" type="hidden">
+                
+                <input formControlName="requiredId" id="requiredId" type="hidden">
+                
+                <input formControlName="applicantId" id="applicantId" type="hidden">
+                
+            </div>
             <div class="bank-input-group">
                 <input type="submit" value="Solicitar" class="bank-btn secondary-btn">
             </div>

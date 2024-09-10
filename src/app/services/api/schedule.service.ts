@@ -27,15 +27,22 @@ export class ScheduleService {
   }
 
   getSchedules(): Observable<Schedule[]> {
+    let userId = this.getLocalUserId();
+    return this.searchSchedule(userId);
+  }
+
+  getLocalUserId(){
     const user =  this.userService.getLocalUser();
-    let userId;
     if (user === null) {
-      userId = 0;
+      return 0;
     } else {
-      userId = user!.id;
+      return user.id!;
     }
+  }
+
+  searchSchedule(userId: number){
     const url = `${this.apiResourceUrl}/user/${userId}`;
-    return this.http.get<Schedule[]>(url) ;
+    return this.http.get<Schedule[]>(url);
   }
 
   getSchedule(id: number): Observable<Schedule>{

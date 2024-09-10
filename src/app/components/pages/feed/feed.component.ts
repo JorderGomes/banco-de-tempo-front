@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UserCardData } from '../../../interfaces/user-card-data';
 import { UserCardService } from '../../../services/user-card.service';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
+import { TalentService } from '../../../services/api/talent.service';
+import { Talent } from '../../../interfaces/entities/talent';
 
 
 @Component({
@@ -12,10 +14,13 @@ import { faGears } from '@fortawesome/free-solid-svg-icons';
 export class FeedComponent {
 
   userDataList: UserCardData[] = [];
-  searchData: any[] = [];
+  searchData: Talent[] = [];
   faIcon = faGears;
 
-  constructor (public userCardService: UserCardService){}
+  constructor (
+    public userCardService: UserCardService,
+    public talentService: TalentService
+  ){}
 
   ngOnInit(): void {
 
@@ -24,12 +29,11 @@ export class FeedComponent {
   }
 
   handleFormSubmittion(data: any){
-    this.searchData.push(data);
-    console.log("handleFormSubmition");
+    this.talentService.searchTalents(data['tag']).subscribe((result) => {
+      this.searchData = result;
+    });
   }
 
-  showData(){
-    console.log(this.searchData);
-  }
+
 
 }

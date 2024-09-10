@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Talent } from '../../interfaces/entities/talent';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom, Observable } from 'rxjs';
 import { UserService } from './user.service';
 
@@ -37,6 +37,14 @@ export class TalentService {
     // return userList;
   }
   
+  searchTalents(tag: string): Observable<Talent[]>{
+    const uri = `${this.apiResourceUrl}`;
+    let params = new HttpParams();
+    params = params.append("category", tag);
+    // params = params.append("name", "a");
+    return this.http.get<Talent[]>(uri, {params});
+  }
+
   getTalent(id: number): Observable<Talent>{
     return this.http.get<Talent>(`${this.apiResourceUrl}/${id}`);
   }

@@ -21,21 +21,8 @@ export class SearchTalentComponent {
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
-      tag: new FormControl('', [Validators.required]),
-      day: new FormControl('', [Validators.required]),
-      timeInit: new FormControl('', [Validators.required]),
+      tag: new FormControl('', [Validators.required])
     });
-
-    // this.userDataList = this.userCardService.getUserCardData();
-
-  }
-
-  get day() {
-    return this.searchForm.get('day')!;
-  }
-
-  get timeInit() {
-    return this.searchForm.get('timeInit')!;
   }
 
   get tag() {
@@ -47,9 +34,6 @@ export class SearchTalentComponent {
       return;
     }
 
-    // 
-    console.log(this.searchForm.value['timeInit']);
-    this.searchForm.value['timeInit'] = this.searchForm.value['timeInit'].split(":")[0] + ":00";
     this.formSubmitted.emit(this.searchForm.value);
 
     formDirective.resetForm();

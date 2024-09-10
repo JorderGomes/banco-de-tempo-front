@@ -21,7 +21,6 @@ export class LandingComponent {
   faGoogle = faGoogle;
 
   createUserForm!: FormGroup;
-  currentUser: User | null = null;
 
   constructor (
     public userService: UserService,
