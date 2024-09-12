@@ -7,6 +7,8 @@ import { ScheduleService } from '../../services/api/schedule.service';
 import { User } from '../../interfaces/entities/user';
 import { UserService } from '../../services/api/user.service';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FavorService } from '../../services/api/favor.service';
+import { Favor } from '../../interfaces/entities/favor';
 
 @Component({
   selector: 'app-user-card',
@@ -21,39 +23,44 @@ export class UserCardComponent {
   
   constructor(
     public scheduleService: ScheduleService,
-    public userService: UserService
+    public userService: UserService,
+    public favorService: FavorService
   ){}
 
   ngOnInit(): void {
     this.requestForm = new FormGroup({
-      applicantId: new FormControl(this.currentUser.id),
-      requiredId: new FormControl(this.talentData.user.id),
-      talentId: new FormControl(this.talentData.id),
+      applicant: new FormControl(this.currentUser),
+      required: new FormControl(this.talentData.user),
+      talent: new FormControl(this.talentData),
       
-      scheduleId: new FormControl('', [Validators.required]),
+      schedule: new FormControl({}, [Validators.required]),
       qtdHours: new FormControl('', [Validators.required])
     });
   }
 
-  get applicantId() {
-    return this.requestForm.get('applicantId')!;
+  get applicant() {
+    return this.requestForm.get('applicant')!;
   }
-  get requiredId() {
-    return this.requestForm.get('requiredId')!;
+  get required() {
+    return this.requestForm.get('required')!;
   }
-  get talentId() {
-    return this.requestForm.get('talentId')!;
+  get talent() {
+    return this.requestForm.get('talent')!;
   }
-  get scheduleId() {
-    return this.requestForm.get('scheduleId')!;
+  get schedule() {
+    return this.requestForm.get('schedule')!;
   }
   get qtdHours() {
     return this.requestForm.get('qtdHours')!;
   }
 
   requestFavor(formData: any, formDirective: FormGroupDirective){
-    console.log(this.requestForm.value);
-    
+    const favor: Favor = this.requestForm.value;
+    console.log(favor);
+    this.favorService.postFavorRequest(favor).subscribe(result => {
+      console.log(result);
+    });
+
     formDirective.resetForm();
     this.requestForm.reset();
   }
@@ -61,3 +68,4 @@ export class UserCardComponent {
 
 
 }
+
