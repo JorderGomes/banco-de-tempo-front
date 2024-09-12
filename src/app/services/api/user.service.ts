@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../interfaces/entities/user';
 import { StorageService } from '../storage.service';
-import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom, Observable, tap } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
 
 
 @Injectable({
