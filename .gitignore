@@ -2,8 +2,7 @@
 
 #local
 src/assets/ignore-assets
-src/environments/*
-
+src/environments/
 
 # Compiled output
 /dist
