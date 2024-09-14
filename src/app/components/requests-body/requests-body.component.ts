@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FavorRequest } from '../../interfaces/favor-request';
-import { FavorService } from '../../services/favor.service';
+
 import { ProfileService } from '../../services/profile.service';
+import { FavorService } from '../../services/api/favor.service';
+import { Favor } from '../../interfaces/entities/favor';
 
 @Component({
   selector: 'app-requests-body',
@@ -10,7 +12,7 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class RequestsBodyComponent {
 
-  favorRequests: FavorRequest[] = [];
+  favorRequests: Favor[] = [];
 
   constructor(
     public favorService: FavorService,
@@ -18,7 +20,9 @@ export class RequestsBodyComponent {
   ) { }
 
   ngOnInit(): void {
-    this.favorRequests = this.favorService.getFavorRequests();
+    this.favorService.getFavorRequests().subscribe(result => {
+      this.favorRequests = result
+    });
   }
 
   updateStatus(id: number, newStatus: string, qtdHours?: number) {
@@ -32,7 +36,7 @@ export class RequestsBodyComponent {
 
     this.favorRequests.forEach(currentFavor => {
       if (id === currentFavor.id) {
-        currentFavor.status = newStatus;
+        currentFavor.statusFavor = newStatus;
       }
     });
 

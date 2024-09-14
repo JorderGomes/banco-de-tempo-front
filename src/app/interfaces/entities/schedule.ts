@@ -3,4 +3,5 @@ export interface Schedule {
     weekDay: string,
     timeBeguin: string,
     timeEnd: string,
+    qtdHours: number
 }

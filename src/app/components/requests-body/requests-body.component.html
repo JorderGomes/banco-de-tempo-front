@@ -34,17 +34,17 @@
             </thead>
             <tbody>
               <tr *ngFor="let favorRequest of favorRequests" class="">
-                <td class="">{{favorRequest.userName}}</td>
-                <td class="">{{favorRequest.talentName}}</td>
-                <td class="">{{favorRequest.day}}</td>
-                <td class="">{{favorRequest.schedule}}</td>
+                <td class="">{{favorRequest.required.name}}</td>
+                <td class="">{{favorRequest.talent.name}}</td>
+                <td class="">{{favorRequest.schedule.weekDay}}</td>
+                <td class="">{{favorRequest.schedule.timeBeguin}}</td>
                 <td class="">{{favorRequest.qtdHours}}</td>
-                <td class="">{{favorRequest.status}}</td>
+                <td class="">{{favorRequest.statusFavor}}</td>
                 <td class="text-center">
-                    <button (click)="updateStatus(favorRequest.id!, 'Cancelada')" *ngIf="favorRequest.status === 'Pendente'" class="btn text-light status-cancelada">
+                    <button (click)="updateStatus(favorRequest.id!, 'Cancelada')" *ngIf="favorRequest.statusFavor === 'Pendente'" class="btn text-light status-cancelada">
                         Cancelar
                     </button>
-                    <button (click)="updateStatus(favorRequest.id!, 'Finalizada', favorRequest.qtdHours)" *ngIf="favorRequest.status === 'Aceita'" class="btn text-light status-finalizada">
+                    <button (click)="updateStatus(favorRequest.id!, 'Finalizada', favorRequest.qtdHours)" *ngIf="favorRequest.statusFavor === 'Aceita'" class="btn text-light status-finalizada">
                         Finalizar
                     </button>
                 </td>

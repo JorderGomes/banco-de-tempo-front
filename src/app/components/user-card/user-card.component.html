@@ -14,14 +14,14 @@
             <div class="bank-input-group">
                 <label for="shcedule">Horário</label>
                 <select 
-                    formControlName="scheduleId"
+                    formControlName="schedule"
                     name="schedule" 
                     id="schedule" 
                     class="bank-input">
                     <option value="" disabled selected hidden>Selecione um horário</option>
                     <option
                         *ngFor="let schedule of talentData.user.schedules"
-                        [ngValue]="schedule.id">
+                        [ngValue]="schedule">
                         {{
                             schedule.weekDay[0] + schedule.weekDay.substring(1).toLowerCase() 
                             + " de " 
@@ -47,11 +47,11 @@
                 >
             </div> 
             <div class="bank-input-group">
-                <input formControlName="talentId" id="talentId" type="hidden">
+                <input formControlName="talent" id="talent" type="hidden">
                 
-                <input formControlName="requiredId" id="requiredId" type="hidden">
+                <input formControlName="required" id="required" type="hidden">
                 
-                <input formControlName="applicantId" id="applicantId" type="hidden">
+                <input formControlName="applicant" id="applicant" type="hidden">
                 
             </div>
             <div class="bank-input-group">
