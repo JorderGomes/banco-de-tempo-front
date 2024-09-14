@@ -3,7 +3,7 @@ import { User } from '../../interfaces/entities/user';
 import { StorageService } from '../storage.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom, Observable, tap } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
