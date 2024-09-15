@@ -3,6 +3,7 @@
 #local
 src/assets/ignore-assets
 src/environments/*
+.env
 
 # Compiled output
 /dist
