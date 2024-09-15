@@ -3,7 +3,7 @@ import { User } from '../../interfaces/entities/user';
 import { StorageService } from '../storage.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom, Observable, tap } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 export class UserService {
 
   private userKey: string = 'local-user';
-  private baseApiUrl: string = environment.baseApiUrl;
+  private baseApiUrl: string = process.env['BASE_API_URL']!; //environment.baseApiUrl;
   private apiResourceUrl: string = `${this.baseApiUrl}/user`;
   private localUser: User = {
     "id": 7,

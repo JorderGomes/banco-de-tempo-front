@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FavorRequest } from '../../interfaces/favor-request';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Favor } from '../../interfaces/entities/favor';
@@ -11,7 +11,7 @@ import { Favor } from '../../interfaces/entities/favor';
 export class FavorService {
 
   favorRequests: FavorRequest[] = [];
-  private baseApiUrl: string = environment.baseApiUrl;
+  private baseApiUrl: string = process.env['BASE_API_URL']!;//environment.baseApiUrl;
   private apiResourceUrl: string = `${this.baseApiUrl}/favor_request`;
 
   constructor(private http: HttpClient) { }

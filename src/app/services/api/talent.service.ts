@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Talent } from '../../interfaces/entities/talent';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom, Observable } from 'rxjs';
 import { UserService } from './user.service';
@@ -10,7 +10,7 @@ import { UserService } from './user.service';
 })
 export class TalentService {
 
-  private baseApiUrl:string = environment.baseApiUrl;
+  private baseApiUrl:string = process.env['BASE_API_URL']!; //environment.baseApiUrl;
   private apiResourceUrl: string = `${this.baseApiUrl}/talent`;
   talentList = [];
   // userId = 
