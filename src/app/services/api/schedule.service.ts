@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Schedule } from '../../interfaces/entities/schedule';
-import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { lastValueFrom, Observable } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
   
-  private baseApiUrl:string = process.env['BASE_API_URL']!; //environment.baseApiUrl;
+  // private baseApiUrl:string = process.env['BASE_API_URL']!; // environment.baseApiUrl;
+  private baseApiUrl: string = environment.baseApiUrl;
+  
   private apiResourceUrl: string = `${this.baseApiUrl}/schedule`;
   scheduleList = [];
   
