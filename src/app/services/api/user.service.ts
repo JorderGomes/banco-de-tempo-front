@@ -6,12 +6,14 @@ import { lastValueFrom, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   private userKey: string = 'local-user';
+  // private baseApiUrl: string = process.env['BASE_API_URL']!;
   private baseApiUrl: string = environment.baseApiUrl;
   private apiResourceUrl: string = `${this.baseApiUrl}/user`;
   private localUser: User = {
