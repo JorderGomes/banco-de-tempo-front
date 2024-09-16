@@ -1,3 +1,3 @@
 export const environment = {
-    baseApiUrl: "https://banco-de-tempo-back.onrender.com"
+    baseApiUrl: "http://192.168.0.6:8080"
 };
